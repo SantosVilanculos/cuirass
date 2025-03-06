@@ -4,10 +4,17 @@ cp ./.env.example ./.env
 
 composer install --no-interaction
 
-php artisan key:generate
+if [ -f ./composer.lock ]; then
+    php artisan key:generate
+    php artisan storage:link
 
-touch ./database/database.sqlite
-php artisan migrate --seed
+
+    touch ./database/database.sqlite
+    php artisan migrate --seed
+fi
 
 pnpm install
-pnpm run build
+
+if [ -f ./pnpm-lock.yaml ]; then
+    pnpm run build
+fi
