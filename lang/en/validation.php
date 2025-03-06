@@ -195,6 +195,8 @@ return [
 
     'attributes' => [
         'email' => 'email address',
+        'phone' => 'phone number',
+        'user_id' => 'user',
     ],
 
 ];
