@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Providers;
 
 use Carbon\CarbonImmutable;
-use Illuminate\Auth\Middleware\RedirectIfAuthenticated;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\App;
@@ -39,7 +38,5 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrapFive();
 
         Password::defaults(fn () => when(App::isProduction(), Password::min(8)->max(24)->uncompromised()));
-
-        RedirectIfAuthenticated::redirectUsing(fn () => route('dashboard'));
     }
 }
