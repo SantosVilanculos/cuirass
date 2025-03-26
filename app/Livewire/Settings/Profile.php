@@ -21,8 +21,11 @@ class Profile extends Component
      */
     public function mount(): void
     {
-        $this->name = Auth::user()->name;
-        $this->email = Auth::user()->email;
+        /** @var User */
+        $user = Auth::user();
+
+        $this->name = $user->name;
+        $this->email = $user->email;
     }
 
     /**
@@ -30,9 +33,10 @@ class Profile extends Component
      */
     public function updateProfileInformation(): void
     {
+        /** @var User */
         $user = Auth::user();
 
-        $validated = $this->validate([
+        $this->validate([
             'name' => ['required', 'string', 'max:255'],
 
             'email' => [
@@ -45,7 +49,10 @@ class Profile extends Component
             ],
         ]);
 
-        $user->fill($validated);
+        $user->fill([
+            'name' => $this->name,
+            'email' => $this->email,
+        ]);
 
         if ($user->isDirty('email')) {
             $user->email_verified_at = null;
@@ -61,6 +68,7 @@ class Profile extends Component
      */
     public function resendVerificationNotification(): void
     {
+        /** @var User */
         $user = Auth::user();
 
         if ($user->hasVerifiedEmail()) {
