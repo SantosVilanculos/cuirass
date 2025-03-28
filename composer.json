@@ -1,13 +1,23 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "laravel/livewire-starter-kit",
+    "name": "santosvilanculos/cuirass",
     "type": "project",
-    "description": "The official Laravel starter kit for Livewire.",
+    "version": "0.0.0",
+    "description": "An Tabler based Laravel starter kit",
+    "homepage": "https://github.com/SantosVilanculos/cuirass",
     "keywords": [
         "laravel",
-        "framework"
+        "tabler"
     ],
     "license": "MIT",
+    "authors": [
+        {
+            "name": "Santos Vilanculos",
+            "email": "santosvilanculos@yahoo.com",
+            "homepage": "https://github.com/SantosVilanculos",
+            "role": "Developer"
+        }
+    ],
     "require": {
         "php": "^8.2",
         "laravel/framework": "^12.0",
