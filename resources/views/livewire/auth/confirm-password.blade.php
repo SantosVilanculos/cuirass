@@ -12,6 +12,21 @@
 
         <form wire:submit="confirmPassword" class="card card-md">
             <div class="card-body">
+                <div class="row">
+                    <div class="col-auto">
+                        <span class="avatar avatar-2 rounded" style="background-image: url('')">
+                            {{ Str::of(Auth::user()->name)->substr(0, 1) }}
+                        </span>
+                    </div>
+
+                    <div class="col">
+                        <div class="text-body-secondary">{{ __('Logged in as') }}</div>
+                        <div class="text-body fw-medium">{{ Auth::user()->name }}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body">
                 @csrf
 
                 <p class="mb-3 text-body-secondary">
