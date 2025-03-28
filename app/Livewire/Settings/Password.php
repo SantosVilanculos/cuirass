@@ -4,45 +4,53 @@ declare(strict_types=1);
 
 namespace App\Livewire\Settings;
 
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules\Password as PasswordRule;
+use Illuminate\Validation\Rules;
 use Illuminate\Validation\ValidationException;
 use Livewire\Component;
 
 class Password extends Component
 {
-    public string $current_password = '';
+    public ?string $current_password = null;
 
-    public string $password = '';
+    public ?string $password = null;
 
-    public string $password_confirmation = '';
+    public ?string $password_confirmation = null;
 
     /**
-     * Update the password for the currently authenticated user.
+     * @throws ValidationException
      */
-    public function updatePassword(): void
+    public function save(): void
     {
-        try {
-            $this->validate([
-                'current_password' => ['required', 'string', 'current_password'],
-                'password' => ['required', 'string', PasswordRule::defaults(), 'confirmed'],
-            ]);
-        } catch (ValidationException $e) {
-            $this->reset('current_password', 'password', 'password_confirmation');
-
-            throw $e;
-        }
-
         /** @var \App\Models\User */
         $user = Auth::user();
 
-        $user->update([
-            'password' => Hash::make($this->password),
+        $this->authorize('update', $user);
+
+        $this->validate([
+            'current_password' => ['required', 'string', 'current_password', 'exclude'],
+            'password' => ['required', 'string', Rules\Password::defaults(), 'confirmed'],
         ]);
 
-        $this->reset('current_password', 'password', 'password_confirmation');
+        if (Hash::check((string) $this->password, $user->password)) {
+            throw ValidationException::withMessages([
+                'password' => __('The new password can\'t be the same as the current password.'),
+            ]);
+        }
 
-        $this->dispatch('password-updated');
+        $user->update(['password' => Hash::make((string) $this->password)]);
+
+        Auth::logoutOtherDevices((string) $this->password);
+
+        $this->reset();
+        $this->dispatch('message', text: __('passwords.reset'), icon: 'success');
+    }
+
+    public function render(): Factory|View
+    {
+        return view('livewire.settings.password');
     }
 }

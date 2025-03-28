@@ -18,7 +18,7 @@ test('password can be updated', function (): void {
         ->set('current_password', 'password')
         ->set('password', 'new-password')
         ->set('password_confirmation', 'new-password')
-        ->call('updatePassword');
+        ->call('save');
 
     $response->assertHasNoErrors();
 
@@ -36,7 +36,7 @@ test('correct password must be provided to update password', function (): void {
         ->set('current_password', 'wrong-password')
         ->set('password', 'new-password')
         ->set('password_confirmation', 'new-password')
-        ->call('updatePassword');
+        ->call('save');
 
     $response->assertHasErrors(['current_password']);
 });

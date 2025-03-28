@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Session;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
-#[Layout('components.layouts.auth')]
+#[Layout('components.layouts.guest')]
 class VerifyEmail extends Component
 {
     /**
@@ -21,7 +21,7 @@ class VerifyEmail extends Component
         $user = Auth::user();
 
         if ($user->hasVerifiedEmail()) {
-            $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
+            $this->redirectIntended(default: route('dashboard', absolute: false));
 
             return;
         }
@@ -41,6 +41,6 @@ class VerifyEmail extends Component
         Session::invalidate();
         Session::regenerateToken();
 
-        $this->redirect('/', navigate: true);
+        $this->redirectRoute('home');
     }
 }

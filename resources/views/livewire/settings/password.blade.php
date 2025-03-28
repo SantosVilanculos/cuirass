@@ -1,42 +1,57 @@
-<section class="w-full">
-    @include('partials.settings-heading')
-
-    <x-settings.layout
-        :heading="__('Update password')"
-        :subheading="__('Ensure your account is using a long, random password to stay secure')"
-    >
-        <form wire:submit="updatePassword" class="mt-6 space-y-6">
-            <flux:input
+<form wire:submit="save">
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label class="form-label" for="current_password">Current password</label>
+            <input
                 wire:model="current_password"
-                :label="__('Current password')"
+                class="form-control"
+                id="current_password"
                 type="password"
-                required
                 autocomplete="current-password"
             />
-            <flux:input
+            @error('current_password')
+                <p class="invalid-feedback d-block">{{ $message }}</p>
+            @enderror
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label class="form-label" for="password">New password</label>
+            <small class="form-hint">
+                Your password must be 8-20 characters long. Don't use a password form another site, or something too
+                obvious like your pet's name.
+            </small>
+            <input
                 wire:model="password"
-                :label="__('New password')"
+                class="form-control"
+                id="password"
                 type="password"
-                required
                 autocomplete="new-password"
             />
-            <flux:input
+            @error('password')
+                <p class="invalid-feedback d-block">{{ $message }}</p>
+            @enderror
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label class="form-label" for="password_confirmation">Confirm new password</label>
+            <input
                 wire:model="password_confirmation"
-                :label="__('Confirm Password')"
+                id="password_confirmation"
+                class="form-control"
                 type="password"
-                required
                 autocomplete="new-password"
             />
+        </div>
+    </div>
 
-            <div class="flex items-center gap-4">
-                <div class="flex items-center justify-end">
-                    <flux:button variant="primary" type="submit" class="w-full">{{ __('Save') }}</flux:button>
-                </div>
-
-                <x-action-message class="me-3" on="password-updated">
-                    {{ __('Saved.') }}
-                </x-action-message>
-            </div>
-        </form>
-    </x-settings.layout>
-</section>
+    <div class="form-footer">
+        <div class="btn-list justify-content-start">
+            <button wire:loading.class="btn-loading" class="btn btn-primary" type="submit">Save</button>
+            {{-- <button wire:dirty class="btn" wire:click="">Reset</button> --}}
+        </div>
+    </div>
+</form>

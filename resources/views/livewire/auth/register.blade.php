@@ -1,63 +1,101 @@
-<div class="flex flex-col gap-6">
-    <x-auth-header
-        :title="__('Create an account')"
-        :description="__('Enter your details below to create your account')"
-    />
-
-    <!-- Session Status -->
-    <x-auth-session-status class="text-center" :status="session('status')" />
-
-    <form wire:submit="register" class="flex flex-col gap-6">
-        <!-- Name -->
-        <flux:input
-            wire:model="name"
-            :label="__('Name')"
-            type="text"
-            required
-            autofocus
-            autocomplete="name"
-            :placeholder="__('Full name')"
-        />
-
-        <!-- Email Address -->
-        <flux:input
-            wire:model="email"
-            :label="__('Email address')"
-            type="email"
-            required
-            autocomplete="email"
-            placeholder="email@example.com"
-        />
-
-        <!-- Password -->
-        <flux:input
-            wire:model="password"
-            :label="__('Password')"
-            type="password"
-            required
-            autocomplete="new-password"
-            :placeholder="__('Password')"
-        />
-
-        <!-- Confirm Password -->
-        <flux:input
-            wire:model="password_confirmation"
-            :label="__('Confirm password')"
-            type="password"
-            required
-            autocomplete="new-password"
-            :placeholder="__('Confirm password')"
-        />
-
-        <div class="flex items-center justify-end">
-            <flux:button type="submit" variant="primary" class="w-full">
-                {{ __('Create account') }}
-            </flux:button>
+<div class="page page-center">
+    <div class="container container-tight space-y-4 py-4">
+        <div class="text-center">
+            <a href="{{ route('home') }}" class="navbar-brand">
+                <img
+                    src="{{ asset('favicon.svg') }}"
+                    alt="{{ config('app.name') }}"
+                    class="w-6 h-6 navbar-brand-image"
+                />
+            </a>
         </div>
-    </form>
 
-    <div class="space-x-1 text-center text-sm text-zinc-600 dark:text-zinc-400">
-        {{ __('Already have an account?') }}
-        <flux:link :href="route('login')" wire:navigate>{{ __('Log in') }}</flux:link>
+        <form wire:submit="register" class="card card-md">
+            <div class="card-body">
+                @csrf
+
+                <div class="mb-3">
+                    <label for="name" class="form-label">{{ __('Name') }}</label>
+                    <input
+                        wire:model="name"
+                        name="name"
+                        type="text"
+                        id="name"
+                        class="form-control"
+                        autocomplete="name"
+                        autofocus
+                        required
+                    />
+                    @error('name')
+                        <div class="d-block invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">{{ __('Email address') }}</label>
+                    <input
+                        wire:model="email"
+                        name="email"
+                        type="email"
+                        id="email"
+                        class="form-control"
+                        autocomplete="email"
+                        required
+                    />
+                    @error('email')
+                        <div class="d-block invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">{{ __('Password') }}</label>
+                    <small class="form-hint">
+                        {{ __('Your password must be 8-20 characters long.') }}
+                    </small>
+                    <input
+                        wire:model="password"
+                        name="password"
+                        type="password"
+                        id="password"
+                        class="form-control"
+                        autocomplete="new-password"
+                        required
+                        minlength="8"
+                        maxlength="20"
+                    />
+                    @error('password')
+                        <p class="d-block invalid-feedback">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label for="password_confirmation" class="form-label">
+                        {{ __('Confirm Password') }}
+                    </label>
+                    <input
+                        wire:model="password_confirmation"
+                        name="password_confirmation"
+                        type="password"
+                        id="password_confirmation"
+                        class="form-control"
+                        required
+                        minlength="8"
+                        maxlength="20"
+                        autocomplete="new-password"
+                    />
+                </div>
+
+                <div class="form-footer">
+                    <button wire:loading.class="btn-loading" type="submit" class="mb-3 btn btn-primary w-100">
+                        {{ __('Create account') }}
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <div class="mt-3 text-center text-secondary">
+            {{ __('Already have an account?') }}
+            <a href="{{ route('login') }}" wire:navigate>{{ __('Log in') }}</a>
+        </div>
     </div>
 </div>
