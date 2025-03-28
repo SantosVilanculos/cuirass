@@ -2,18 +2,14 @@
     <div class="container container-tight space-y-4 py-4">
         <div class="text-center">
             <a href="{{ route('home') }}" class="navbar-brand">
-                <img
-                    src="{{ asset('favicon.svg') }}"
-                    alt="{{ config('app.name') }}"
-                    class="w-6 h-6 navbar-brand-image"
-                />
+                <img src="{{ asset('favicon.svg') }}" alt="{{ config('app.name') }}" class="w-6 h-6 navbar-brand-image" />
             </a>
         </div>
 
         @if (session('status') == 'verification-link-sent')
             <div class="card card-md card-active">
-                <div class="card-body">
-                    <p>
+                <div class="card-body py-4">
+                    <p class="text-body-secondary">
                         {{ __('A new verification link has been sent to the email address you provided during registration.') }}
                     </p>
                 </div>
@@ -29,12 +25,8 @@
                 <form wire:submit="sendVerification" class="mb-3">
                     @csrf
 
-                    <button
-                        wire:loading.class="btn-loading"
-                        wire:target="sendVerification"
-                        type="submit"
-                        class="btn btn-primary w-100"
-                    >
+                    <button wire:loading.class="btn-loading" wire:target="sendVerification" type="submit"
+                        class="btn btn-primary w-100">
                         {{ __('Resend verification email') }}
                     </button>
                 </form>

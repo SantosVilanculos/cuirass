@@ -2,18 +2,14 @@
     <div class="container container-tight space-y-4 py-4">
         <div class="text-center">
             <a href="{{ route('home') }}" class="navbar-brand">
-                <img
-                    src="{{ asset('favicon.svg') }}"
-                    alt="{{ config('app.name') }}"
-                    class="w-6 h-6 navbar-brand-image"
-                />
+                <img src="{{ asset('favicon.svg') }}" alt="{{ config('app.name') }}" class="w-6 h-6 navbar-brand-image" />
             </a>
         </div>
 
         @session('status')
             <div class="card card-md card-active">
-                <div class="card-body">
-                    <p>{{ $value }}</p>
+                <div class="card-body py-4">
+                    <p class="text-body-secondary">{{ $value }}</p>
                 </div>
             </div>
         @endsession
@@ -24,16 +20,8 @@
 
                 <div class="mb-3">
                     <label for="email" class="form-label">{{ __('Email address') }}</label>
-                    <input
-                        wire:model="email"
-                        name="email"
-                        type="email"
-                        id="email"
-                        class="form-control"
-                        autocomplete="email"
-                        autofocus
-                        required
-                    />
+                    <input wire:model="email" name="email" type="email" id="email" class="form-control"
+                        autocomplete="email" autofocus required />
 
                     @error('email')
                         <p class="d-block invalid-feedback">{{ $message }}</p>
@@ -53,15 +41,8 @@
                         @endif
                     </label>
 
-                    <input
-                        wire:model="password"
-                        name="password"
-                        type="password"
-                        id="password"
-                        class="form-control"
-                        required
-                        autocomplete="current-password"
-                    />
+                    <input wire:model="password" name="password" type="password" id="password" class="form-control"
+                        required autocomplete="current-password" />
 
                     @error('password')
                         <p class="d-block invalid-feedback">{{ $message }}</p>
