@@ -2,7 +2,7 @@
     "$schema": "https://getcomposer.org/schema.json",
     "name": "santosvilanculos/cuirass",
     "type": "project",
-    "description": "An Tabler based Laravel starter kit",
+    "description": "Tabler based Laravel starter kit",
     "homepage": "https://github.com/SantosVilanculos/cuirass",
     "keywords": [
         "laravel",
