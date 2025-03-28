@@ -23,5 +23,6 @@ yarn-error.log
 /.zed
 
 /composer.lock
+/laradumps.yaml
 /package-lock.json
 /pnpm-lock.yaml
