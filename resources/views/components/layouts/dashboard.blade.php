@@ -28,7 +28,7 @@
                                                     <path d="M4 15l4 -6l4 2l4 -5l4 4" />
                                                 </svg>
                                             </span>
-                                            <span class="nav-link-title">Dashboard</span>
+                                            <span class="nav-link-title">Overview</span>
                                         </a>
                                     </li>
 
