@@ -15,9 +15,11 @@ Route::middleware(['auth', 'verified'])
     });
 
 Route::middleware(['auth'])->group(function (): void {
-    Route::redirect('settings', 'settings/profile');
+    Route::redirect('settings', 'settings/account');
 
-    Route::view('settings/profile', 'pages.settings.profile')->name('settings.profile');
+    Route::view('settings/account', 'pages.settings.account')->name('settings.account');
+    Route::view('settings/account/profile', 'pages.settings.account-profile')->name('settings.account.profile');
+    Route::view('settings/account/photo', 'pages.settings.account-photo')->name('settings.account.photo');
 });
 
 require __DIR__.'/auth.php';

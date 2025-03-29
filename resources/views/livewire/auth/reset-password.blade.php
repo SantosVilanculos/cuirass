@@ -17,10 +17,6 @@
             <div class="card-body">
                 @csrf
 
-                <p class="mb-3 text-body-secondary">
-                    {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
-                </p>
-
                 <div class="mb-3">
                     <label for="email" class="form-label">{{ __('Email address') }}</label>
                     <input

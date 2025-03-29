@@ -14,6 +14,8 @@ use Livewire\Component;
 
 class Password extends Component
 {
+    public bool $showModal = false;
+
     public ?string $current_password = null;
 
     public ?string $password = null;
@@ -46,6 +48,7 @@ class Password extends Component
         Auth::logoutOtherDevices((string) $this->password);
 
         $this->reset();
+        $this->showModal = false;
         $this->dispatch('message', text: __('passwords.reset'), icon: 'success');
     }
 

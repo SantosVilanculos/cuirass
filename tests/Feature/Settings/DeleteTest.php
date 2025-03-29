@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Livewire\Settings\Destroy;
+use App\Livewire\Settings\Delete;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Livewire;
@@ -12,7 +12,7 @@ test('user can delete their account', function (): void {
 
     $this->actingAs($user);
 
-    $response = Livewire::test(Destroy::class)
+    $response = Livewire::test(Delete::class)
         ->set('password', 'password')
         ->call('destroy1');
 
@@ -31,7 +31,7 @@ test('correct password must be provided to delete account', function (): void {
 
     $this->actingAs($user);
 
-    $response = Livewire::test(Destroy::class)
+    $response = Livewire::test(Delete::class)
         ->set('password', 'wrong-password')
         ->call('destroy1');
 

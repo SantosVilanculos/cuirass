@@ -356,9 +356,18 @@
                                 data-bs-toggle="dropdown"
                                 aria-label="Open user menu"
                             >
-                                <span class="avatar avatar-sm" style="background-image: url('')">
-                                    {{ Str::of(Auth::user()->name)->substr(0, 1) }}
-                                </span>
+                                @isset(Auth::user()->image)
+                                    <span
+                                        class="avatar avatar-sm"
+                                        style="
+                                            background-image: url({{ Storage::disk('public')->url(Auth::user()->image) }});
+                                        "
+                                    ></span>
+                                @else
+                                    <span class="avatar avatar-sm">
+                                        {{ Str::of(Auth::user()->name)->substr(0, 1) }}
+                                    </span>
+                                @endisset
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
@@ -366,7 +375,7 @@
                                     href="{{ route('dashboard') }}"
                                     @class(['dropdown-item', 'active' => Request::routeIs('dashboard')])
                                 >
-                                    {{-- chart-line --}}
+                                    {{-- layout-dashboard --}}
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="24"
@@ -380,14 +389,24 @@
                                         class="icon dropdown-item-icon"
                                     >
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path d="M4 19l16 0" />
-                                        <path d="M4 15l4 -6l4 2l4 -5l4 4" />
+                                        <path
+                                            d="M5 4h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1"
+                                        />
+                                        <path
+                                            d="M5 16h4a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-2a1 1 0 0 1 1 -1"
+                                        />
+                                        <path
+                                            d="M15 12h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1"
+                                        />
+                                        <path
+                                            d="M15 4h4a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-2a1 1 0 0 1 1 -1"
+                                        />
                                     </svg>
                                     {{ __('Dashboard') }}
                                 </a>
 
                                 <a
-                                    href="{{ route('settings.profile') }}"
+                                    href="{{ route('settings.account') }}"
                                     @class(['dropdown-item', 'active' => Request::routeIs('settings.*')])
                                 >
                                     {{-- settings --}}
@@ -491,6 +510,17 @@
                         <div class="row text-center align-items-center flex-row-reverse">
                             <div class="col-lg-auto ms-lg-auto">
                                 <ul class="list-inline list-inline-dots mb-0">
+                                    <li class="list-inline-item">
+                                        <a
+                                            class="link-secondary"
+                                            href="https://tabler.io/docs"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            Documentation
+                                        </a>
+                                    </li>
+
                                     <li class="list-inline-item">
                                         <a
                                             class="link-secondary"

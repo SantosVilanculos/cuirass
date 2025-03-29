@@ -27,9 +27,16 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-auto">
-                        <span class="avatar avatar-2 rounded" style="background-image: url('')">
-                            {{ Str::of(Auth::user()->name)->substr(0, 1) }}
-                        </span>
+                        @isset(Auth::user()->image)
+                            <span
+                                class="avatar avatar-2 rounded"
+                                style="background-image: url({{ Storage::disk('public')->url(Auth::user()->image) }})"
+                            ></span>
+                        @else
+                            <span class="avatar avatar-2 rounded">
+                                {{ Str::of(Auth::user()->name)->substr(0, 1) }}
+                            </span>
+                        @endisset
                     </div>
 
                     <div class="col">
