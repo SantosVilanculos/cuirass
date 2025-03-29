@@ -6,9 +6,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn () => view('pages.welcome'))->name('home');
 
-Route::view('dashboard', 'pages.dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+Route::middleware(['auth', 'verified'])->group(function (): void {
+    Route::view('dashboard', 'pages.dashboard')->name('dashboard');
+    Route::view('empty-page', 'pages.empty-page')->name('empty-page');
+});
 
 Route::middleware(['auth'])->group(function (): void {
     Route::redirect('settings', 'settings/profile');

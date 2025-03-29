@@ -6,4 +6,6 @@
             </div>
         </div>
     @endsection
+
+    {{-- ... --}}
 </x-layouts.app>
