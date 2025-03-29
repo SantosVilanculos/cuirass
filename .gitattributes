@@ -6,6 +6,8 @@
 *.md diff=markdown
 *.php diff=php
 
+*.ico binary
+*.png binary
 *.woff2 binary
 
 CHANGELOG.md export-ignore
