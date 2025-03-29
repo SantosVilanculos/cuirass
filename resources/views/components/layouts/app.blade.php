@@ -6,7 +6,8 @@
 
         <title>{{ config('app.name') }}</title>
 
-        <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon" />
+        <link rel="icon" href="{{ asset('favicon.ico') }}" sizes="48x48" type="image/x-icon" />
+        <link rel="icon" href="{{ asset('favicon.svg') }}" sizes="any" type="image/svg+xml" />
 
         <link rel="stylesheet" href="{{ asset('vendor/inter/4.1/inter.min.css') }}" />
 
