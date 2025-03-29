@@ -1,4 +1,4 @@
-<x-layouts.app>
+<x-layouts.dashboard>
     @section('page-header')
         <div class="row g-2 align-items-center">
             <div class="col">
@@ -8,4 +8,4 @@
     @endsection
 
     {{-- ... --}}
-</x-layouts.app>
+</x-layouts.dashboard>
