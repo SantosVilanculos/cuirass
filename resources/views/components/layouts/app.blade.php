@@ -578,7 +578,7 @@
                                             class="link-secondary"
                                             rel="noopener"
                                         >
-                                            v0.0.0
+                                            v1.0.0
                                         </a>
                                     </li>
                                 </ul>
