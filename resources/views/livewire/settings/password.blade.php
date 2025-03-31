@@ -1,7 +1,7 @@
 <div x-data="{ open: $wire.entangle('showModal') }">
     <div>
         <h3 class="card-title">Password</h3>
-        <p class="card-subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        <p class="card-subtitle">You can change your password here.</p>
         <div>
             <button x-on:click="open = true" class="btn" type="button">Set new password</button>
         </div>
@@ -28,6 +28,8 @@
                     <form wire:submit="save" class="modal-content">
                         <div class="modal-body">
                             @csrf
+
+                            <div class="modal-title">Update password</div>
 
                             <div class="mb-3">
                                 <label class="form-label" for="current_password">Current password</label>

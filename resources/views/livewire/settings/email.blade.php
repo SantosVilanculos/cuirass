@@ -1,6 +1,6 @@
 <form wire:submit="save">
     <h3 class="card-title">Email</h3>
-    <p class="card-subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+    <p class="card-subtitle">The email address used for authentication and notifications.</p>
     <div>
         <div class="row g-2">
             <div class="col-auto">

@@ -2,12 +2,12 @@
     <div>
         <h3 class="card-title">Delete My Account</h3>
         <p class="card-subtitle">
-            Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting
-            your account, please download any data or information that you wish to retain.
+            Deleting your user will permanently delete all user data. You should download any data that you wish to
+            retain.
         </p>
 
         <div>
-            <button x-on:click="open = true" class="btn btn-danger" type="button">Delete my account</button>
+            <button x-on:click="open = true" class="btn text-danger" type="button">Delete my account</button>
         </div>
     </div>
 
