@@ -11,8 +11,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\File;
-// use Intervention\Image\Drivers\Gd\Driver;
-// use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
+use Intervention\Image\ImageManager;
 use Livewire\Component;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Livewire\Features\SupportFileUploads\WithFileUploads;
@@ -56,12 +56,12 @@ class Photo extends Component
                 ['disk' => 'public']
             );
 
-            // if (is_string($path)) {
-            //     $manager = new ImageManager(Driver::class);
-            //     $manager->read($disk->path($path))
-            //         ->coverDown(256, 256)
-            //         ->save();
-            // }
+            if (is_string($path)) {
+                $manager = new ImageManager(Driver::class);
+                $manager->read($disk->path($path))
+                    ->coverDown(256, 256)
+                    ->save();
+            }
 
             if (is_string($path) && $disk->fileExists((string) $user->image)) {
                 $disk->delete((string) $user->image);
