@@ -36,7 +36,7 @@ class AppServiceProvider extends ServiceProvider
         Model::shouldBeStrict(! App::isProduction());
         Model::unguard();
 
-        Password::defaults(fn () => App::isProduction() ? Password::min(8)->max(20)->uncompromised() : null);
+        Password::defaults(fn () => when(App::isProduction(), Password::min(8)->max(20)->uncompromised()));
 
         Paginator::useBootstrapFive();
 
