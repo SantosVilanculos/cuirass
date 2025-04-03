@@ -18,7 +18,7 @@
             @if (Route::has('login'))
                 <div class="page-header d-print-none">
                     <div class="container-md">
-                        <div class="d-flex justify-content-between">
+                        <div class="d-flex justify-content-between column-gap-2">
                             <div class="navbar-brand navbar-brand-autodark">
                                 <svg
                                     class="navbar-brand-image h-4"
@@ -34,7 +34,7 @@
                                 </svg>
                             </div>
 
-                            <div class="d-grid gap-2" style="grid-template-columns: repeat(2, 1fr)">
+                            <div class="d-flex flex column-gap-2">
                                 @auth
                                     <a href="{{ url('/dashboard') }}" class="btn">Dashboard</a>
                                 @else
