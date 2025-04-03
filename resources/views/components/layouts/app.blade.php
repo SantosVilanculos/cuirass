@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="{{ asset('vendor/inter/4.1/inter.min.css') }}" />
 
         @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
-            @vite(['resources/css/index.css', 'resources/js/index.js'])
+            @vite(['resources/css/app.css', 'resources/js/app.js'])
         @endif
 
         @stack('assets')
