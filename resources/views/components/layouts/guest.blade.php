@@ -14,6 +14,8 @@
         @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
             @vite(['resources/css/index.css', 'resources/js/index.js'])
         @endif
+
+        @stack('assets')
     </head>
 
     <body class="h-full">
