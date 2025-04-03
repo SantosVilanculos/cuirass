@@ -26,23 +26,59 @@ test('profile photo can be uploaded', function (): void {
     Storage::disk('public')->assertExists('users/'.$image->hashName());
 });
 
-test('profile photo can be deleted', function (): void {
+test('only profile photos less than 2MB can be uploaded', function (): void {
     $user = User::factory()->create();
 
     Storage::fake('public');
 
-    $image = UploadedFile::fake()->image('avatar.jpg', 200, 200)->size(1024);
+    $image = UploadedFile::fake()->image('avatar.jpg', 256, 256)->size(4096);
+
+    $this->actingAs($user);
+
+    $response = Livewire::test(Photo::class)
+        ->set('image', $image);
+
+    $response->assertHasErrors();
+
+    $user->refresh();
+
+    Storage::disk('public')->assertMissing('users/'.$image->hashName());
+});
+
+test('only profile photos 192x192 or more can be uploaded', function (): void {
+    $user = User::factory()->create();
+
+    Storage::fake('public');
+
+    $image = UploadedFile::fake()->image('avatar.jpg', 128, 128)->size(1024);
+
+    $this->actingAs($user);
+
+    $response = Livewire::test(Photo::class)
+        ->set('image', $image);
+
+    $response->assertHasErrors();
+
+    $user->refresh();
+
+    Storage::disk('public')->assertMissing('users/'.$image->hashName());
+});
+
+test('profile photo can be deleted', function (): void {
+
+    Storage::fake('public');
+
+    $path = UploadedFile::fake()
+        ->image('avatar.jpg', 256, 256)
+        ->size(1024)
+        ->store('users', ['disk' => 'public']);
+
+    $user = User::factory()->create(['image' => $path]);
 
     $this->actingAs($user);
 
     Livewire::test(Photo::class)
-        ->set('image', $image)
-        ->call('save');
-
-    Storage::disk('public')->assertExists('users/'.$image->hashName());
-
-    Livewire::test(Photo::class)
         ->call('destroy');
 
-    Storage::disk('public')->assertMissing('users/'.$image->hashName());
+    Storage::disk('public')->assertMissing($path);
 });
