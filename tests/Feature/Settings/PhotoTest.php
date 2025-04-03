@@ -12,13 +12,14 @@ test('profile photo can be uploaded', function (): void {
 
     Storage::fake('public');
 
-    $image = UploadedFile::fake()->image('avatar.jpg', 200, 200)->size(1024);
+    $image = UploadedFile::fake()->image('avatar.jpg', 256, 256)->size(1024);
 
     $this->actingAs($user);
 
-    Livewire::test(Photo::class)
-        ->set('image', $image)
-        ->call('save');
+    $response = Livewire::test(Photo::class)
+        ->set('image', $image);
+
+    $response->assertHasNoErrors();
 
     $user->refresh();
 
