@@ -32,6 +32,7 @@ class AppServiceProvider extends ServiceProvider
 
         DB::prohibitDestructiveCommands(App::isProduction());
 
+        Model::preventLazyLoading(! App::isProduction());
         Model::shouldBeStrict(! App::isProduction());
         Model::unguard();
 
