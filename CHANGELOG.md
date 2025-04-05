@@ -15,7 +15,6 @@ No changes yet.
 
 - Account photos now use Intervention Image for processing.
 - Added tests to validate uploaded account photo size and dimensions.
-- Disabled model lazy loading when not in production.
 - Added this CHANGELOG file.
 
 ### Changed
