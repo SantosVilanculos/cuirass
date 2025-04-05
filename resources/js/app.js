@@ -1,3 +1,4 @@
+import './bootstrap.js';
 import '@tabler/core/dist/js/tabler.min.js';
 import Swal from 'sweetalert2';
 
