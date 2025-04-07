@@ -21,12 +21,19 @@ beforeEach(fn () => $this->user = User::create(
     ]
 ));
 
+test('create', fn () => $this->assertModelExists($this->user));
+
 test('to array', function (): void {
+    $this->user->refresh();
+
     expect($this->user->toArray())
-        ->toHaveSnakeCaseKeys()
-        ->toHaveKeys(
+        ->toHaveSnakeCaseKeys();
+
+    expect(array_keys($this->user->toArray()))
+        ->toBe(
             [
                 'id',
+                'image',
                 'name',
                 'email',
                 'email_verified_at',
@@ -34,21 +41,10 @@ test('to array', function (): void {
                 'updated_at',
             ]
         );
-
-    expect(array_diff(array_keys($this->user->toArray()),
-        [
-            'id',
-            'name',
-            'email',
-            'email_verified_at',
-            'created_at',
-            'updated_at',
-        ]
-    ))->toBeEmpty();
 });
 
 test('get hidden', fn (): Pest\Expectation => expect($this->user->getHidden())
-    ->toEqual(['password', 'remember_token']));
+    ->toBe(['password', 'remember_token']));
 
 test('get casts', fn (): Pest\Expectation => expect($this->user->getCasts())
     ->toMatchArray(
@@ -58,8 +54,6 @@ test('get casts', fn (): Pest\Expectation => expect($this->user->getCasts())
             'password' => 'hashed',
         ]
     ));
-
-test('create', fn () => $this->assertModelExists($this->user));
 
 describe('unique', function (): void {
     test('email', fn () => User::factory()->create(['email' => 'johndoe@example.test']))
@@ -71,7 +65,7 @@ test('find', function (): void {
 
     $this->assertNotNull($user);
 
-    expect($user->toArray())->toMatchArray($this->user->toArray());
+    expect($user->toArray())->toMatchArray($this->user->fresh()->toArray());
 });
 
 test('update', function (): void {
