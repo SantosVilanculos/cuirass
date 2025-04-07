@@ -37,6 +37,6 @@ class AppServiceProvider extends ServiceProvider
 
         Paginator::useBootstrapFive();
 
-        Password::defaults(fn () => when(App::isProduction(), Password::min(8)->max(24)->uncompromised()));
+        Password::defaults(fn () => when(App::isProduction(), Password::min(8)->max(20)->uncompromised()));
     }
 }
