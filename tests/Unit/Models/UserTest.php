@@ -76,9 +76,7 @@ test('update', function (): void {
         ],
     );
 
-    $this->user->refresh();
-
-    expect(Arr::only($this->user->toArray(), ['name', 'email']))
+    expect(Arr::only($this->user->fresh()->toArray(), ['name', 'email']))
         ->toEqual(
             [
                 'name' => 'Jane Doe',
