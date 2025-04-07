@@ -7,7 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-No changes yet.
+### Added
+
+- Added User model test
+- Added pt_PT language files
 
 ## [1.0.1] 2025-04-04
 
@@ -36,7 +39,7 @@ No changes yet.
 
 - Integrated Larastan, Pint, Prettier, Rector, Debugbar, and Laradumps.
 - Integrated Tabler UI kit and dashboard template.
-- Added user authentication and settings management.
+- Added user user registration, authentication, password reset, email verification and password confirmation settings management.
 - Added unit and feature tests.
 - Implemented a GitHub testing workflow.
 
