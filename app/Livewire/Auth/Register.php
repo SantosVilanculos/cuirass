@@ -16,13 +16,13 @@ use Livewire\Component;
 #[Layout('components.layouts.guest')]
 class Register extends Component
 {
-    public string $name = '';
+    public ?string $name = null;
 
-    public string $email = '';
+    public ?string $email = null;
 
-    public string $password = '';
+    public ?string $password = null;
 
-    public string $password_confirmation = '';
+    public ?string $password_confirmation = null;
 
     /**
      * Handle an incoming registration request.
@@ -38,7 +38,7 @@ class Register extends Component
         $user = User::create([
             'name' => $this->name,
             'email' => $this->email,
-            'password' => Hash::make($this->password),
+            'password' => Hash::make((string) $this->password),
         ]);
 
         event(new Registered($user));

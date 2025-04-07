@@ -11,7 +11,7 @@ use Livewire\Component;
 #[Layout('components.layouts.guest')]
 class ForgotPassword extends Component
 {
-    public string $email = '';
+    public ?string $email = null;
 
     /**
      * Send a password reset link to the provided email address.

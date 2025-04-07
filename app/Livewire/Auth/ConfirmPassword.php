@@ -12,7 +12,7 @@ use Livewire\Component;
 #[Layout('components.layouts.guest')]
 class ConfirmPassword extends Component
 {
-    public string $password = '';
+    public ?string $password = null;
 
     /**
      * Confirm the current user's password.

@@ -19,13 +19,13 @@ use Livewire\Component;
 class ResetPassword extends Component
 {
     #[Locked]
-    public string $token = '';
+    public ?string $token = null;
 
-    public string $email = '';
+    public ?string $email = null;
 
-    public string $password = '';
+    public ?string $password = null;
 
-    public string $password_confirmation = '';
+    public ?string $password_confirmation = null;
 
     /**
      * Mount the component.
@@ -62,7 +62,7 @@ class ResetPassword extends Component
             ],
             function (User $user): void {
                 $user->forceFill([
-                    'password' => Hash::make($this->password),
+                    'password' => Hash::make((string) $this->password),
                     'remember_token' => Str::random(60),
                 ])->save();
 
