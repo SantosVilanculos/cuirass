@@ -77,7 +77,7 @@ test('update', function (): void {
     );
 
     expect(Arr::only($this->user->fresh()->toArray(), ['name', 'email']))
-        ->toEqual(
+        ->toBe(
             [
                 'name' => 'Jane Doe',
                 'email' => 'janedoe@example.test',
@@ -91,4 +91,4 @@ test('delete', function (): void {
     $this->assertModelMissing($this->user);
 });
 
-test('count', fn (): Pest\Expectation => expect(User::count())->toEqual(1));
+test('count', fn (): Pest\Expectation => expect(User::count())->toBe(1));
