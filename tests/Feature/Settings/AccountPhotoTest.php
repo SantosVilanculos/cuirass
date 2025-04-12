@@ -7,6 +7,21 @@ use App\Models\User;
 use Illuminate\Http\UploadedFile;
 use Livewire\Livewire;
 
+test('account photo screen can be rendered', function (): void {
+    $this->actingAs(User::factory()->create());
+
+    /** @var Illuminate\Testing\TestResponse */
+    $response = $this->get(route('settings.account.photo'));
+
+    $response->assertOk();
+});
+
+test('user is redirected to login if not authenticated', function (): void {
+    /** @var Illuminate\Testing\TestResponse */
+    $response = $this->get(route('settings.account.photo'));
+
+    $response->assertRedirect(route('login'));
+});
 test('profile photo can be uploaded', function (): void {
     $user = User::factory()->create();
 
