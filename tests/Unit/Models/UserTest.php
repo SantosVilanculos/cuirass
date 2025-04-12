@@ -47,7 +47,7 @@ test('get hidden', fn (): Pest\Expectation => expect($this->user->getHidden())
     ->toBe(['password', 'remember_token']));
 
 test('get casts', fn (): Pest\Expectation => expect($this->user->getCasts())
-    ->toMatchArray(
+    ->toBe(
         [
             'id' => 'int',
             'email_verified_at' => 'datetime',
@@ -65,7 +65,7 @@ test('find', function (): void {
 
     $this->assertNotNull($user);
 
-    expect($user->toArray())->toMatchArray($this->user->fresh()->toArray());
+    expect($user->toArray())->toBe($this->user->fresh()->toArray());
 });
 
 test('update', function (): void {
