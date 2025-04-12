@@ -25,7 +25,7 @@ test('user is redirected to login if not authenticated', function (): void {
     $response->assertRedirect(route('login'));
 });
 
-describe('email', function () {
+describe('email', function (): void {
     test('email can be updated', function (): void {
         $user = User::factory()->create();
 
@@ -55,7 +55,7 @@ describe('email', function () {
     });
 });
 
-describe('password', function () {
+describe('password', function (): void {
 
     test('password can be updated', function (): void {
         $user = User::factory()->create([
@@ -92,7 +92,7 @@ describe('password', function () {
     });
 });
 
-describe('delete', function () {
+describe('delete', function (): void {
 
     test('user can delete their account', function (): void {
         $user = User::factory()->create();
