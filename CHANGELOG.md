@@ -7,11 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+Nothing yet!
+
+## [1.0.2] 2025-04-12
+
 ### Added
 
 - Added User model test
 - Added pt_PT language files
-- Added log files viewer
+- Added log files web viewer
 
 ## [1.0.1] 2025-04-04
 
@@ -44,6 +48,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added unit and feature tests.
 - Implemented a GitHub testing workflow.
 
-[unreleased]: https://github.com/santosvilanculos/cuirass/compare/v1.0.1...HEAD
+[unreleased]: https://github.com/santosvilanculos/cuirass/compare/v1.0.2...HEAD
+[1.0.2]: https://github.com/santosvilanculos/cuirass/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/santosvilanculos/cuirass/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/santosvilanculos/cuirass/releases/tag/v1.0.0
