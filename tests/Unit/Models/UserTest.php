@@ -7,24 +7,74 @@ use Illuminate\Database\UniqueConstraintViolationException;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
 
-beforeEach(fn () => $this->user = User::create(
-    [
+test('create', function (): void {
+    $now = $this->freezeTime()->format('Y-m-d H:i:s');
+
+    $user = User::factory()->create();
+
+    $this->assertModelExists($user);
+
+    $user->refresh();
+
+    expect($user->created_at->format('Y-m-d H:i:s'))->toBe($now);
+    expect($user->updated_at->format('Y-m-d H:i:s'))->toBe($now);
+});
+
+test('read', function (): void {
+    $user = User::factory()->create();
+
+    $model = User::find($user->id);
+
+    $this->assertNotNull($model);
+
+    expect($user->fresh()->toArray())->toBe($model->toArray());
+});
+
+test('update', function (): void {
+    $user = User::factory()->create([
         'name' => 'John Doe',
         'email' => 'johndoe@example.test',
-        'email_verified_at' => now(),
-        'password' => Hash::make('password'),
-    ]
-));
+    ]);
 
-test('create', fn () => $this->assertModelExists($this->user));
+    $this->travelTo($now = now()->addDay()->format('Y-m-d H:i:s'));
+
+    $user->update(
+        [
+            'name' => 'Jane Doe',
+            'email' => 'janedoe@example.test',
+        ],
+    );
+
+    $user->refresh();
+
+    expect(Arr::only($user->toArray(), ['name', 'email']))
+        ->toBe(
+            [
+                'name' => 'Jane Doe',
+                'email' => 'janedoe@example.test',
+            ],
+        );
+
+    expect($user->updated_at->format('Y-m-d H:i:s'))->toBe($now);
+});
+
+test('delete', function (): void {
+    $user = User::factory()->create();
+
+    $user->delete();
+
+    $this->assertModelMissing($user);
+});
 
 test('to array', function (): void {
-    $this->user->refresh();
+    $user = User::factory()->create();
 
-    expect($this->user->toArray())
+    $user->refresh();
+
+    expect($user->toArray())
         ->toHaveSnakeCaseKeys();
 
-    expect(array_keys($this->user->toArray()))
+    expect(array_keys($user->toArray()))
         ->toBe(
             [
                 'id',
@@ -38,52 +88,37 @@ test('to array', function (): void {
         );
 });
 
-test('get hidden', fn (): Pest\Expectation => expect($this->user->getHidden())
-    ->toBe(['password', 'remember_token']));
+test('get hidden', function (): void {
+    $user = User::factory()->create();
 
-test('get casts', fn (): Pest\Expectation => expect($this->user->getCasts())
-    ->toBe(
-        [
-            'id' => 'int',
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ]
-    ));
+    expect($user->getHidden())
+        ->toBe(['password', 'remember_token']);
 
-describe('unique', function (): void {
-    test('email', fn () => User::factory()->create(['email' => 'johndoe@example.test']))
-        ->throws(UniqueConstraintViolationException::class);
+    expect($user->toArray())->not->toHaveKeys(['password', 'remember_token']);
 });
 
-test('find', function (): void {
-    $user = User::find($this->user->id);
+test('get casts', function (): void {
+    $user = User::factory()->create(['password' => 'password']);
 
-    $this->assertNotNull($user);
-
-    expect($user->toArray())->toBe($this->user->fresh()->toArray());
-});
-
-test('update', function (): void {
-    $this->user->update(
-        [
-            'name' => 'Jane Doe',
-            'email' => 'janedoe@example.test',
-        ],
-    );
-
-    expect(Arr::only($this->user->fresh()->toArray(), ['name', 'email']))
+    expect($user->getCasts())
         ->toBe(
             [
-                'name' => 'Jane Doe',
-                'email' => 'janedoe@example.test',
-            ],
+                'id' => 'int',
+                'email_verified_at' => 'datetime',
+                'password' => 'hashed',
+            ]
         );
+
+    // email_verified_at
+    $this->assertInstanceOf(Carbon\CarbonImmutable::class, $user->email_verified_at);
+
+    // password
+    $this->assertTrue(Hash::isHashed($user->password));
+    $this->assertTrue(Hash::check('password', $user->password));
 });
 
-test('delete', function (): void {
-    $this->user->delete();
+test('email', function (): void {
+    User::factory()->create(['email' => 'johndoe@example.test']);
 
-    $this->assertModelMissing($this->user);
-});
-
-test('count', fn (): Pest\Expectation => expect(User::count())->toBe(1));
+    User::factory()->create(['email' => 'johndoe@example.test']);
+})->throws(UniqueConstraintViolationException::class);
