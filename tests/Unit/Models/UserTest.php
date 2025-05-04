@@ -7,11 +7,6 @@ use Illuminate\Database\UniqueConstraintViolationException;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
 
-uses(
-    Illuminate\Foundation\Testing\RefreshDatabase::class,
-    Tests\TestCase::class
-);
-
 beforeEach(fn () => $this->user = User::create(
     [
         'name' => 'John Doe',
