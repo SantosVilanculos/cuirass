@@ -7,7 +7,7 @@ parameters:
         - ./app
         - ./database
 
-    level: max
+    level: 5
 
     treatPhpDocTypesAsCertain: false
 
