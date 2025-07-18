@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Livewire\Auth\Login;
+use App\Livewire\Header\UserButton;
 use App\Models\User;
 use Livewire\Livewire;
 
@@ -43,7 +44,10 @@ test('users can not authenticate with invalid password', function (): void {
 test('users can logout', function (): void {
     $user = User::factory()->create();
 
-    $response = $this->actingAs($user)->post('/logout');
+    $this->actingAs($user);
+
+    $response = Livewire::test(UserButton::class)
+        ->call('logout');
 
     $response->assertRedirect('/');
 

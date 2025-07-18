@@ -2,57 +2,26 @@
 
 declare(strict_types=1);
 
-use App\Livewire\Settings\Delete;
-use App\Livewire\Settings\Email;
-use App\Livewire\Settings\Password;
+use App\Livewire\Settings\DeleteUserModal;
+use App\Livewire\Settings\PasswordModal;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Livewire;
 
-test('account settings screen can be rendered', function (): void {
+test('security screen can be rendered', function (): void {
     $this->actingAs(User::factory()->create());
 
     /** @var Illuminate\Testing\TestResponse */
-    $response = $this->get(route('settings.account'));
+    $response = $this->get(route('settings.security'));
 
     $response->assertOk();
 });
 
 test('user is redirected to login if not authenticated', function (): void {
     /** @var Illuminate\Testing\TestResponse */
-    $response = $this->get(route('settings.account'));
+    $response = $this->get(route('settings.security'));
 
     $response->assertRedirect(route('login'));
-});
-
-describe('email', function (): void {
-    test('email can be updated', function (): void {
-        $user = User::factory()->create();
-
-        $response = Livewire::actingAs($user)
-            ->test(Email::class)
-            ->set('email', 'test@example.com')
-            ->call('save');
-
-        $response->assertHasNoErrors();
-
-        $user->refresh();
-
-        expect($user->email)->toEqual('test@example.com');
-    });
-
-    test('email verification status is unchanged when email address is unchanged', function (): void {
-        $user = User::factory()->create();
-
-        $response = Livewire::actingAs($user)
-            ->test(Email::class)
-            ->set('email', $user->email)
-            ->call('save');
-
-        $response->assertHasNoErrors();
-
-        expect($user->refresh()->email_verified_at)->not->toBeNull();
-    });
 });
 
 describe('password', function (): void {
@@ -64,7 +33,7 @@ describe('password', function (): void {
 
         $this->actingAs($user);
 
-        $response = Livewire::test(Password::class)
+        $response = Livewire::test(PasswordModal::class)
             ->set('current_password', 'password')
             ->set('password', 'new-password')
             ->set('password_confirmation', 'new-password')
@@ -82,7 +51,7 @@ describe('password', function (): void {
 
         $this->actingAs($user);
 
-        $response = Livewire::test(Password::class)
+        $response = Livewire::test(PasswordModal::class)
             ->set('current_password', 'wrong-password')
             ->set('password', 'new-password')
             ->set('password_confirmation', 'new-password')
@@ -92,14 +61,14 @@ describe('password', function (): void {
     });
 });
 
-describe('delete', function (): void {
+describe('delete user', function (): void {
 
     test('user can delete their account', function (): void {
         $user = User::factory()->create();
 
         $this->actingAs($user);
 
-        $response = Livewire::test(Delete::class)
+        $response = Livewire::test(DeleteUserModal::class)
             ->set('password', 'password')
             ->call('destroy1');
 
@@ -118,7 +87,7 @@ describe('delete', function (): void {
 
         $this->actingAs($user);
 
-        $response = Livewire::test(Delete::class)
+        $response = Livewire::test(DeleteUserModal::class)
             ->set('password', 'wrong-password')
             ->call('destroy1');
 
