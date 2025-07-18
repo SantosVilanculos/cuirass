@@ -70,7 +70,7 @@ describe('delete user', function (): void {
 
         $response = Livewire::test(DeleteUserModal::class)
             ->set('password', 'password')
-            ->call('destroy1');
+            ->call('destroy');
 
         $response
             ->assertHasNoErrors()
@@ -89,7 +89,7 @@ describe('delete user', function (): void {
 
         $response = Livewire::test(DeleteUserModal::class)
             ->set('password', 'wrong-password')
-            ->call('destroy1');
+            ->call('destroy');
 
         $response
             ->assertHasErrors(['password'])

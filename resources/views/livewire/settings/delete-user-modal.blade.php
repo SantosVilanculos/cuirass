@@ -19,7 +19,7 @@
                     class="modal-dialog modal-md modal-dialog-centered"
                     role="document"
                 >
-                    <form wire:submit="destroy1" class="modal-content border shadow-sm">
+                    <form wire:submit="destroy" class="modal-content border shadow-sm">
                         <div class="modal-body">
                             @csrf
 

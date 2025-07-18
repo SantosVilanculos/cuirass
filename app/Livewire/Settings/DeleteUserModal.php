@@ -14,7 +14,7 @@ class DeleteUserModal extends Component
 {
     public ?string $password = null;
 
-    public function destroy1(): void
+    public function destroy(): void
     {
         /** @var \App\Models\User */
         $user = Auth::user();
