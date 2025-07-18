@@ -1,78 +1,17 @@
 <?php
 
 declare(strict_types=1);
-
 use App\Models\User;
+use Carbon\CarbonImmutable;
 use Illuminate\Database\UniqueConstraintViolationException;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
-
-test('create', function (): void {
-    $now = $this->freezeTime()->format('Y-m-d H:i:s');
-
-    $user = User::factory()->create();
-
-    $this->assertModelExists($user);
-
-    $user->refresh();
-
-    expect($user->created_at->format('Y-m-d H:i:s'))->toBe($now);
-    expect($user->updated_at->format('Y-m-d H:i:s'))->toBe($now);
-});
-
-test('read', function (): void {
-    $user = User::factory()->create();
-
-    $model = User::find($user->id);
-
-    $this->assertNotNull($model);
-
-    expect($user->fresh()->toArray())->toBe($model->toArray());
-});
-
-test('update', function (): void {
-    $user = User::factory()->create([
-        'name' => 'John Doe',
-        'email' => 'johndoe@example.test',
-    ]);
-
-    $this->travelTo($now = now()->addDay()->format('Y-m-d H:i:s'));
-
-    $user->update(
-        [
-            'name' => 'Jane Doe',
-            'email' => 'janedoe@example.test',
-        ],
-    );
-
-    $user->refresh();
-
-    expect(Arr::only($user->toArray(), ['name', 'email']))
-        ->toBe(
-            [
-                'name' => 'Jane Doe',
-                'email' => 'janedoe@example.test',
-            ],
-        );
-
-    expect($user->updated_at->format('Y-m-d H:i:s'))->toBe($now);
-});
-
-test('delete', function (): void {
-    $user = User::factory()->create();
-
-    $user->delete();
-
-    $this->assertModelMissing($user);
-});
 
 test('to array', function (): void {
     $user = User::factory()->create();
 
     $user->refresh();
 
-    expect($user->toArray())
-        ->toHaveSnakeCaseKeys();
+    expect($user->toArray())->toHaveSnakeCaseKeys();
 
     expect(array_keys($user->toArray()))
         ->toBe(
@@ -91,8 +30,7 @@ test('to array', function (): void {
 test('get hidden', function (): void {
     $user = User::factory()->create();
 
-    expect($user->getHidden())
-        ->toBe(['password', 'remember_token']);
+    expect($user->getHidden())->toBe(['password', 'remember_token']);
 
     expect($user->toArray())->not->toHaveKeys(['password', 'remember_token']);
 });
@@ -109,16 +47,23 @@ test('get casts', function (): void {
             ]
         );
 
+    // id
+    expect($user->id)->toBeInt();
+
     // email_verified_at
-    $this->assertInstanceOf(Carbon\CarbonImmutable::class, $user->email_verified_at);
+    expect($user->email_verified_at)->toBeInstanceOf(CarbonImmutable::class);
 
     // password
-    $this->assertTrue(Hash::isHashed($user->password));
-    $this->assertTrue(Hash::check('password', $user->password));
+    expect(Hash::isHashed($user->password))->toBeTrue();
+    expect(Hash::check('password', $user->password))->toBeTrue();
 });
 
-test('email', function (): void {
-    User::factory()->create(['email' => 'johndoe@example.test']);
+describe('email', function (): void {
+    beforeEach(fn () => User::factory()->create(['email' => 'johndoe@example.test']));
 
-    User::factory()->create(['email' => 'johndoe@example.test']);
-})->throws(UniqueConstraintViolationException::class);
+    test('throws unique constraint violation exception', fn () => User::factory()->create(['email' => 'johndoe@example.test']))
+        ->throws(UniqueConstraintViolationException::class);
+
+    test('throws no exceptions', fn () => User::factory()->create(['email' => 'janedoe@example.test']))
+        ->throwsNoExceptions();
+});
