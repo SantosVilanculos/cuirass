@@ -8,6 +8,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 
 class DeleteUserModal extends Component
@@ -29,7 +30,13 @@ class DeleteUserModal extends Component
         Session::invalidate();
         Session::regenerateToken();
 
+        $path = $user->image;
+
         $user->delete();
+
+        if (is_string($path) && Storage::disk('public')->fileExists($path)) {
+            Storage::disk('public')->delete($path);
+        }
 
         $this->redirectRoute('login', navigate: true);
     }
