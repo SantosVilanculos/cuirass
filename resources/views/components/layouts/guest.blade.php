@@ -47,9 +47,9 @@
                     selectedTheme = storedTheme ? storedTheme : defaultTheme;
                 }
                 if (selectedTheme === 'dark') {
-                    document.body.setAttribute('data-bs-theme', selectedTheme);
+                    document.documentElement.setAttribute('data-bs-theme', selectedTheme);
                 } else {
-                    document.body.removeAttribute('data-bs-theme');
+                    document.documentElement.removeAttribute('data-bs-theme');
                 }
             });
         </script>
