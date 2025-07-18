@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Livewire\Auth\ConfirmPassword;
 use App\Livewire\Auth\ForgotPassword;
@@ -30,6 +29,3 @@ Route::middleware('auth')->group(function (): void {
     Route::get('confirm-password', ConfirmPassword::class)
         ->name('password.confirm');
 });
-
-Route::post('logout', LogoutController::class)
-    ->name('logout');

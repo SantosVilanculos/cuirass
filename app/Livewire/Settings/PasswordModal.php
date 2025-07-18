@@ -12,7 +12,7 @@ use Illuminate\Validation\Rules;
 use Illuminate\Validation\ValidationException;
 use Livewire\Component;
 
-class Password extends Component
+class PasswordModal extends Component
 {
     public bool $showModal = false;
 
@@ -54,6 +54,6 @@ class Password extends Component
 
     public function render(): Factory|View
     {
-        return view('livewire.settings.password');
+        return view('livewire.settings.password-modal');
     }
 }

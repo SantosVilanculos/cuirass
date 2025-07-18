@@ -1,11 +1,5 @@
 <div x-data="{ open: $wire.entangle('showModal') }">
-    <div>
-        <h3 class="card-title">Password</h3>
-        <p class="card-subtitle">You can change your password here.</p>
-        <div>
-            <button x-on:click="open = true" class="btn" type="button">Set new password</button>
-        </div>
-    </div>
+    <button x-on:click="open = true" class="btn" type="button">Set new password</button>
 
     @teleport('body')
         <div>
@@ -25,7 +19,7 @@
                     class="modal-dialog modal-md modal-dialog-centered"
                     role="document"
                 >
-                    <form wire:submit="save" class="modal-content">
+                    <form wire:submit="save" class="modal-content border shadow-sm">
                         <div class="modal-body">
                             @csrf
 

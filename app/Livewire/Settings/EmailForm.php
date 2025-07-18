@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 
-class Email extends Component
+class EmailForm extends Component
 {
     public ?string $email = null;
 
@@ -40,6 +40,7 @@ class Email extends Component
             $user->sendEmailVerificationNotification();
         }
 
+        $this->dispatch('user:updated');
         $this->dispatch('message', text: __('Changes saved.'), icon: 'success');
     }
 
@@ -68,6 +69,6 @@ class Email extends Component
         /** @var User */
         $user = Auth::user();
 
-        return view('livewire.settings.email', ['user' => $user]);
+        return view('livewire.settings.email-form', ['user' => $user]);
     }
 }

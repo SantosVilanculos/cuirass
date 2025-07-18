@@ -1,15 +1,5 @@
 <div x-data="{ open: false }">
-    <div>
-        <h3 class="card-title">Delete My Account</h3>
-        <p class="card-subtitle">
-            Deleting your user will permanently delete all user data. You should download any data that you wish to
-            retain.
-        </p>
-
-        <div>
-            <button x-on:click="open = true" class="btn text-danger" type="button">Delete my account</button>
-        </div>
-    </div>
+    <button x-on:click="open = true" class="btn text-danger" type="button">Delete my account</button>
 
     @teleport('body')
         <div>
@@ -29,7 +19,7 @@
                     class="modal-dialog modal-md modal-dialog-centered"
                     role="document"
                 >
-                    <form wire:submit="destroy1" class="modal-content">
+                    <form wire:submit="destroy1" class="modal-content border shadow-sm">
                         <div class="modal-body">
                             @csrf
 

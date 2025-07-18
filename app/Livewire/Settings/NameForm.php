@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Livewire\Settings;
 
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\Factory;
+use Illuminate\View\View;
 use Livewire\Component;
 
-class Profile extends Component
+class NameForm extends Component
 {
     public ?string $name = null;
 
@@ -21,13 +21,14 @@ class Profile extends Component
         $this->authorize('update', $user);
 
         $this->validate([
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'min:2', 'max:255'],
         ]);
 
         $user->update([
             'name' => $this->name,
         ]);
 
+        $this->dispatch('user:updated');
         $this->dispatch('message', text: __('Changes saved.'), icon: 'success');
     }
 
@@ -41,6 +42,6 @@ class Profile extends Component
 
     public function render(): Factory|View
     {
-        return view('livewire.settings.profile');
+        return view('livewire.settings.name-form');
     }
 }

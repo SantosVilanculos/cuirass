@@ -17,7 +17,7 @@ use Livewire\Component;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Livewire\Features\SupportFileUploads\WithFileUploads;
 
-class Photo extends Component
+class ImageForm extends Component
 {
     use WithFileUploads;
 
@@ -74,6 +74,7 @@ class Photo extends Component
         }
 
         $this->reset();
+        $this->dispatch('user:updated');
         $this->dispatch('message', text: __('Changes saved.'), icon: 'success');
     }
 
@@ -94,6 +95,7 @@ class Photo extends Component
         }
 
         $user->update(['image' => null]);
+        $this->dispatch('user:updated');
         $this->dispatch('message', text: __('Changes saved.'), icon: 'success');
     }
 
@@ -102,6 +104,6 @@ class Photo extends Component
         /** @var User */
         $user = Auth::user();
 
-        return view('livewire.settings.photo', ['user' => $user]);
+        return view('livewire.settings.image-form', ['user' => $user]);
     }
 }

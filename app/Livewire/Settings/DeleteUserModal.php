@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 
-class Delete extends Component
+class DeleteUserModal extends Component
 {
     public ?string $password = null;
 
@@ -36,6 +36,6 @@ class Delete extends Component
 
     public function render(): Factory|View
     {
-        return view('livewire.settings.delete');
+        return view('livewire.settings.delete-user-modal');
     }
 }
