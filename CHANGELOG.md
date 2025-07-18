@@ -7,10 +7,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+Nothing yet.
+
+## [1.0.3] - 2025-07-18
+
+### Added
+
+- Lint and test worflow.
+- Automaticaly generate IDE helper files using vite.
+
 ### Changed
 
-- `laravel/framework` version bump to 12.10.
+- Added Unit directory to pest extend.
+- `vite` version bump to 7.x.
 - Replaced `pnpm` in favor of `npm` for tests on ci.
+- Revamped user settings and add user button component to the main layout header.
+- Used Inter font as a package.
+- Updated npm packages.
+- Updated validation custom attributes.
+- Lowered phpstan level to 5.
+
+### Fixed
+
+- Add dark theme attribute to the root element.
+- Delete user image on user deletion.
 
 ## [1.0.2] 2025-04-12
 
@@ -51,7 +71,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added unit and feature tests.
 - Implemented a GitHub testing workflow.
 
-[unreleased]: https://github.com/santosvilanculos/cuirass/compare/v1.0.2...HEAD
+[unreleased]: https://github.com/santosvilanculos/cuirass/compare/v1.0.3...HEAD
+[1.0.3]: https://github.com/santosvilanculos/cuirass/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/santosvilanculos/cuirass/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/santosvilanculos/cuirass/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/santosvilanculos/cuirass/releases/tag/v1.0.0

@@ -444,7 +444,7 @@
                                             class="link-secondary"
                                             rel="noopener"
                                         >
-                                            v1.0.2
+                                            v1.0.3
                                         </a>
                                     </li>
                                 </ul>
