@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', fn () => view('pages.welcome'))->name('home');
+Route::get('/', fn (): Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View => view('pages.welcome'))->name('home');
 
 Route::middleware(['auth', 'verified'])
     ->prefix('dashboard')

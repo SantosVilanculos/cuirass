@@ -28,6 +28,8 @@ Nothing yet.
 - Upgraded `pestphp/pest-plugin-laravel` to `^4.0`.
 - Upgraded `pestphp/pest-plugin-type-coverage` to `^4.0`.
 - Upgraded `phpstan/phpstan` to `^2.1`.
+- Upgraded `rector/rector` to `^2.1.1`.
+- Fixed rector return type issues for arrow functions.
 - Added `phpunit/phpunit` to `^12.0`.
 
 ## [1.0.4] - 2026-04-08
