@@ -1,0 +1,17 @@
+{
+    "agents": [
+        "copilot",
+        "opencode",
+        "gemini"
+    ],
+    "cloud": false,
+    "guidelines": true,
+    "mcp": true,
+    "nightwatch": false,
+    "sail": false,
+    "skills": [
+        "laravel-best-practices",
+        "livewire-development",
+        "pest-testing"
+    ]
+}
