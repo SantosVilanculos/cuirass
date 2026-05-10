@@ -9,6 +9,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Nothing yet.
 
+## [1.1.0] - 2026-05-10
+
+### Added
+
+- Added agent skills for Laravel best practices, Livewire development, and Pest testing.
+- Upgraded to Laravel 13.
+- Added `serializable_classes` config to cache.
+- Added `composer.lock` to git tracking.
+
+### Changed
+
+- Upgraded `laravel/framework` to `^13.0`.
+- Upgraded `laravel/tinker` to `^3.0`.
+- Upgraded `livewire/livewire` to `^4.0`.
+- Upgraded `laradumps/laradumps` to `^5.0`.
+- Upgraded `pestphp/pest` to `^4.0`.
+- Upgraded `pestphp/pest-plugin-laravel` to `^4.0`.
+- Upgraded `pestphp/pest-plugin-type-coverage` to `^4.0`.
+- Upgraded `phpstan/phpstan` to `^2.1`.
+- Upgraded `rector/rector` to `^2.1.1`.
+- Fixed rector return type issues for arrow functions.
+- Added `phpunit/phpunit` to `^12.0`.
+
+## [1.0.4] - 2026-04-08
+
+### Added
+
+- Updated composer and npm packages.
+
 ## [1.0.3] - 2025-07-18
 
 ### Added
@@ -71,7 +100,9 @@ Nothing yet.
 - Added unit and feature tests.
 - Implemented a GitHub testing workflow.
 
-[unreleased]: https://github.com/santosvilanculos/cuirass/compare/v1.0.3...HEAD
+[unreleased]: https://github.com/santosvilanculos/cuirass/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/santosvilanculos/cuirass/compare/v1.0.4...v1.1.0
+[1.0.4]: https://github.com/santosvilanculos/cuirass/compare/v1.0.3...v1.0.4
 [1.0.3]: https://github.com/santosvilanculos/cuirass/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/santosvilanculos/cuirass/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/santosvilanculos/cuirass/compare/v1.0.0...v1.0.1
