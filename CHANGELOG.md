@@ -7,7 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-Nothing yet.
+### Added
+
+- Upgraded to Laravel 13.
+- Added `serializable_classes` config to cache.
+
+### Changed
+
+- Upgraded `laravel/framework` to `^13.0`.
+- Upgraded `laravel/tinker` to `^3.0`.
+- Upgraded `livewire/livewire` to `^4.0`.
+- Upgraded `laradumps/laradumps` to `^5.0`.
+- Upgraded `pestphp/pest` to `^4.0`.
+- Upgraded `pestphp/pest-plugin-laravel` to `^4.0`.
+- Upgraded `pestphp/pest-plugin-type-coverage` to `^4.0`.
+- Upgraded `phpstan/phpstan` to `^2.1`.
+- Added `phpunit/phpunit` to `^12.0`.
 
 ## [1.0.4] - 2026-04-08
 
