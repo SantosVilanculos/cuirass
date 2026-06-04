@@ -9,23 +9,23 @@
         "@fontsource-variable/inter": "^5.2.8",
         "@fontsource/inter": "^5.2.8",
         "@tabler/core": "^1.4.0",
-        "apexcharts": "^5.10.5",
+        "apexcharts": "^5.13.0",
         "autosize": "^6.0.1",
-        "axios": "^1.14.0",
-        "choices.js": "^11.2.1",
+        "axios": "^1.17.0",
+        "choices.js": "^11.2.3",
         "countup.js": "^2.10.0",
         "flatpickr": "^4.6.13",
         "imask": "^7.6.1",
         "nouislider": "^15.8.1",
-        "sweetalert2": "^11.26.24",
-        "tom-select": "^2.5.2"
+        "sweetalert2": "^11.26.25",
+        "tom-select": "^2.6.1"
     },
     "devDependencies": {
         "concurrently": "^9.2.1",
         "laravel-vite-plugin": "^2.1.0",
-        "prettier": "^3.8.1",
+        "prettier": "^3.8.3",
         "prettier-plugin-blade": "^2.1.21",
-        "vite": "^7.3.2",
+        "vite": "^7.3.5",
         "vite-plugin-run": "^0.6.1"
     }
 }
