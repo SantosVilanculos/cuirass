@@ -27,6 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated the remaining composer and npm packages to their latest versions.
 - Replaced the raw Intervention image processing with Laravel's `Image` wrapper in the profile image upload.
 - Fixed the deprecated `PDO::MYSQL_ATTR_SSL_CA` constant usage in the database config for PHP 8.5.
+- Re-synced the published config files with the installed framework and package versions (new cache, logging, queue, and mail drivers/settings; Livewire payload guards, `class_path` and release token config).
 
 ## [1.1.0] - 2026-05-10
 
