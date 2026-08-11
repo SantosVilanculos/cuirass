@@ -8,11 +8,10 @@ use App\Models\User;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Image;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\File;
-use Intervention\Image\Drivers\Gd\Driver;
-use Intervention\Image\ImageManager;
 use Livewire\Component;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Livewire\Features\SupportFileUploads\WithFileUploads;
@@ -51,17 +50,9 @@ class ImageForm extends Component
             /** @var \Illuminate\Filesystem\FilesystemAdapter */
             $disk = Storage::disk('public');
 
-            $path = $this->image->store(
-                $user->getTable(),
-                ['disk' => 'public']
-            );
-
-            if (is_string($path)) {
-                $manager = new ImageManager(Driver::class);
-                $manager->read($disk->path($path))
-                    ->coverDown(256, 256)
-                    ->save();
-            }
+            $path = Image::fromUpload($this->image)
+                ->cover(256, 256)
+                ->storeAs(path: $user->getTable(), name: $this->image->hashName(), disk: 'public');
 
             if (is_string($path) && $disk->fileExists((string) $user->image)) {
                 $disk->delete((string) $user->image);
