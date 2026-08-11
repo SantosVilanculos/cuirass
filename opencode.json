@@ -1,14 +1,21 @@
 {
     "$schema": "https://opencode.ai/config.json",
+    "lsp": {
+        "laravel-lsp": {
+            "command": ["laravel-lsp"],
+            "extensions": [".php", ".blade.php"]
+        }
+    },
     "mcp": {
         "laravel-boost": {
             "type": "local",
             "enabled": true,
-            "command": [
-                "php",
-                "artisan",
-                "boost:mcp"
-            ]
+            "command": ["php", "artisan", "boost:mcp"],
+        },
+        "lerd": {
+            "command": ["lerd", "mcp"],
+            "enabled": true,
+            "type": "local"
         }
     }
 }
