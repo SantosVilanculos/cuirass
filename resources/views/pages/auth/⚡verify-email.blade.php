@@ -1,3 +1,45 @@
+<?php
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use Livewire\Attributes\Layout;
+use Livewire\Component;
+
+new #[Layout('components.layouts.guest')] class extends Component {
+    /**
+     * Send an email verification notification to the user.
+     */
+    public function sendVerification(): void
+    {
+        /** @var \Illuminate\Contracts\Auth\MustVerifyEmail */
+        $user = Auth::user();
+
+        if ($user->hasVerifiedEmail()) {
+            $this->redirectIntended(default: route('dashboard', absolute: false));
+
+            return;
+        }
+
+        $user->sendEmailVerificationNotification();
+
+        Session::flash('status', 'verification-link-sent');
+    }
+
+    /**
+     * Log the current user out of the application.
+     */
+    public function logout(): void
+    {
+        Auth::guard('web')->logout();
+
+        Session::invalidate();
+        Session::regenerateToken();
+
+        $this->redirectRoute('home');
+    }
+};
+?>
+
 <div class="page page-center">
     <div class="container container-tight space-y-4 py-4">
         <div class="text-center">

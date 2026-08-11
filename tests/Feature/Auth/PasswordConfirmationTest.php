@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use App\Livewire\Auth\ConfirmPassword;
 use App\Models\User;
 use Livewire\Livewire;
 
@@ -19,7 +18,7 @@ test('password can be confirmed', function (): void {
 
     $this->actingAs($user);
 
-    $response = Livewire::test(ConfirmPassword::class)
+    $response = Livewire::test('pages::auth.confirm-password')
         ->set('password', 'password')
         ->call('confirmPassword');
 
@@ -33,7 +32,7 @@ test('password is not confirmed with invalid password', function (): void {
 
     $this->actingAs($user);
 
-    $response = Livewire::test(ConfirmPassword::class)
+    $response = Livewire::test('pages::auth.confirm-password')
         ->set('password', 'wrong-password')
         ->call('confirmPassword');
 

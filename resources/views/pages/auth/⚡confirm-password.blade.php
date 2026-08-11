@@ -1,3 +1,41 @@
+<?php
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
+use Livewire\Attributes\Layout;
+use Livewire\Component;
+
+new #[Layout('components.layouts.guest')] class extends Component {
+    public ?string $password = null;
+
+    /**
+     * Confirm the current user's password.
+     */
+    public function confirmPassword(): void
+    {
+        $this->validate([
+            'password' => ['required', 'string'],
+        ]);
+
+        /** @var \App\Models\User */
+        $user = Auth::user();
+
+        if (! Auth::guard('web')->validate([
+            'email' => $user->email,
+            'password' => $this->password,
+        ])) {
+            throw ValidationException::withMessages([
+                'password' => __('auth.password'),
+            ]);
+        }
+
+        session(['auth.password_confirmed_at' => time()]);
+
+        $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
+    }
+};
+?>
+
 <div class="page page-center">
     <div class="container container-tight space-y-4 py-4">
         <div class="text-center">

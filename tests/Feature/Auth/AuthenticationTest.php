@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-use App\Livewire\Auth\Login;
-use App\Livewire\Header\UserButton;
 use App\Models\User;
 use Livewire\Livewire;
 
@@ -16,7 +14,7 @@ test('login screen can be rendered', function (): void {
 test('users can authenticate using the login screen', function (): void {
     $user = User::factory()->create();
 
-    $response = Livewire::test(Login::class)
+    $response = Livewire::test('pages::auth.login')
         ->set('email', $user->email)
         ->set('password', 'password')
         ->call('login');
@@ -31,7 +29,7 @@ test('users can authenticate using the login screen', function (): void {
 test('users can not authenticate with invalid password', function (): void {
     $user = User::factory()->create();
 
-    $response = Livewire::test(Login::class)
+    $response = Livewire::test('pages::auth.login')
         ->set('email', $user->email)
         ->set('password', 'wrong-password')
         ->call('login');
@@ -46,7 +44,7 @@ test('users can logout', function (): void {
 
     $this->actingAs($user);
 
-    $response = Livewire::test(UserButton::class)
+    $response = Livewire::test('header.user-button')
         ->call('logout');
 
     $response->assertRedirect('/');
