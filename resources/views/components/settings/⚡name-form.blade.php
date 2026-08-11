@@ -1,3 +1,40 @@
+<?php
+
+use Illuminate\Support\Facades\Auth;
+use Livewire\Component;
+
+new class extends Component {
+    public ?string $name = null;
+
+    public function save(): void
+    {
+        /** @var \App\Models\User */
+        $user = Auth::user();
+
+        $this->authorize('update', $user);
+
+        $this->validate([
+            'name' => ['required', 'string', 'min:2', 'max:255'],
+        ]);
+
+        $user->update([
+            'name' => $this->name,
+        ]);
+
+        $this->dispatch('user:updated');
+        $this->dispatch('message', text: __('Changes saved.'), icon: 'success');
+    }
+
+    public function mount(): void
+    {
+        /** @var \App\Models\User */
+        $user = Auth::user();
+
+        $this->name = $user->name;
+    }
+};
+?>
+
 <form wire:submit="save">
     <div class="card">
         <!-- <div class="card-header"> -->

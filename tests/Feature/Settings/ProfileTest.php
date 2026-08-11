@@ -2,9 +2,6 @@
 
 declare(strict_types=1);
 
-use App\Livewire\Settings\EmailForm;
-use App\Livewire\Settings\ImageForm;
-use App\Livewire\Settings\NameForm;
 use App\Models\User;
 use Illuminate\Http\UploadedFile;
 use Livewire\Livewire;
@@ -37,7 +34,7 @@ describe('image', function (): void {
 
         $this->actingAs($user);
 
-        $response = Livewire::test(ImageForm::class)
+        $response = Livewire::test('settings.image-form')
             ->set('image', $image);
 
         $response->assertHasNoErrors();
@@ -56,7 +53,7 @@ describe('image', function (): void {
 
         $this->actingAs($user);
 
-        $response = Livewire::test(ImageForm::class)
+        $response = Livewire::test('settings.image-form')
             ->set('image', $image);
 
         $response->assertHasErrors();
@@ -75,7 +72,7 @@ describe('image', function (): void {
 
         $this->actingAs($user);
 
-        $response = Livewire::test(ImageForm::class)
+        $response = Livewire::test('settings.image-form')
             ->set('image', $image);
 
         $response->assertHasErrors();
@@ -98,7 +95,7 @@ describe('image', function (): void {
 
         $this->actingAs($user);
 
-        Livewire::test(ImageForm::class)
+        Livewire::test('settings.image-form')
             ->call('destroy');
 
         Storage::disk('public')->assertMissing($path);
@@ -111,7 +108,7 @@ describe('name', function (): void {
 
         $this->actingAs($user);
 
-        $response = Livewire::test(NameForm::class)
+        $response = Livewire::test('settings.name-form')
             ->set('name', 'Test User')
             ->call('save');
 
@@ -128,7 +125,7 @@ describe('email', function (): void {
         $user = User::factory()->create();
 
         $response = Livewire::actingAs($user)
-            ->test(EmailForm::class)
+            ->test('settings.email-form')
             ->set('email', 'test@example.com')
             ->call('save');
 
@@ -143,7 +140,7 @@ describe('email', function (): void {
         $user = User::factory()->create();
 
         $response = Livewire::actingAs($user)
-            ->test(EmailForm::class)
+            ->test('settings.email-form')
             ->set('email', $user->email)
             ->call('save');
 

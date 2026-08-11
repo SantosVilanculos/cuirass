@@ -1,3 +1,41 @@
+<?php
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
+use Livewire\Component;
+
+new class extends Component {
+    public ?string $password = null;
+
+    public function destroy(): void
+    {
+        /** @var \App\Models\User */
+        $user = Auth::user();
+
+        $this->authorize('delete', $user);
+
+        $this->validate([
+            'password' => ['required', 'string', 'current_password', 'exclude'],
+        ]);
+
+        Auth::guard('web')->logout();
+        Session::invalidate();
+        Session::regenerateToken();
+
+        $path = $user->image;
+
+        $user->delete();
+
+        if (is_string($path) && Storage::disk('public')->fileExists($path)) {
+            Storage::disk('public')->delete($path);
+        }
+
+        $this->redirectRoute('login', navigate: true);
+    }
+};
+?>
+
 <div x-data="{ open: false }">
     <button x-on:click="open = true" class="btn text-danger" type="button">Delete my account</button>
 

@@ -1,3 +1,64 @@
+<?php
+
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
+use Livewire\Component;
+
+new class extends Component {
+    public ?string $email = null;
+
+    public function save(): void
+    {
+        /** @var User */
+        $user = Auth::user();
+
+        $this->authorize('update', $user);
+
+        $this->validate([
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:254', Rule::unique(User::class)->ignoreModel($user)],
+        ]);
+
+        $user->fill([
+            'email' => $this->email,
+        ]);
+
+        if ($user->isDirty('email')) {
+            $user->email_verified_at = null;
+        }
+
+        $user->save();
+
+        if ($user->wasChanged('email') && $user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail) {
+            $user->sendEmailVerificationNotification();
+        }
+
+        $this->dispatch('user:updated');
+        $this->dispatch('message', text: __('Changes saved.'), icon: 'success');
+    }
+
+    public function sendEmailVerificationNotification(): void
+    {
+        /** @var User */
+        $user = Auth::user();
+
+        if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail()) {
+            $user->sendEmailVerificationNotification();
+        }
+
+        $this->dispatch('message', text: __('A new verification link has been sent to your email address.'), icon: 'success');
+    }
+
+    public function mount(): void
+    {
+        /** @var User */
+        $user = Auth::user();
+
+        $this->email = $user->email;
+    }
+};
+?>
+
 <form wire:submit="save">
     <div class="card">
         <!-- <div class="card-header"> -->
@@ -16,7 +77,7 @@
                     </div>
                 </div>
 
-                @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
+                @if (Auth::user() instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! Auth::user()->hasVerifiedEmail())
                     <div class="row">
                         <div class="col-md-6">
                             <p class="text-body-secondary">Your email address is unverified. Please check your inbox for a verification email and click the link to confirm your email. If you didn\'t receive the email, we will gladly send you another.</p>

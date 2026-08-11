@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-use App\Livewire\Settings\DeleteUserModal;
-use App\Livewire\Settings\PasswordModal;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Livewire;
@@ -33,7 +31,7 @@ describe('password', function (): void {
 
         $this->actingAs($user);
 
-        $response = Livewire::test(PasswordModal::class)
+        $response = Livewire::test('settings.password-modal')
             ->set('current_password', 'password')
             ->set('password', 'new-password')
             ->set('password_confirmation', 'new-password')
@@ -51,7 +49,7 @@ describe('password', function (): void {
 
         $this->actingAs($user);
 
-        $response = Livewire::test(PasswordModal::class)
+        $response = Livewire::test('settings.password-modal')
             ->set('current_password', 'wrong-password')
             ->set('password', 'new-password')
             ->set('password_confirmation', 'new-password')
@@ -68,7 +66,7 @@ describe('delete user', function (): void {
 
         $this->actingAs($user);
 
-        $response = Livewire::test(DeleteUserModal::class)
+        $response = Livewire::test('settings.delete-user-modal')
             ->set('password', 'password')
             ->call('destroy');
 
@@ -87,7 +85,7 @@ describe('delete user', function (): void {
 
         $this->actingAs($user);
 
-        $response = Livewire::test(DeleteUserModal::class)
+        $response = Livewire::test('settings.delete-user-modal')
             ->set('password', 'wrong-password')
             ->call('destroy');
 

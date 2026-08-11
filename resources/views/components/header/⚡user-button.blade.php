@@ -1,12 +1,38 @@
+<?php
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use Livewire\Attributes\On;
+use Livewire\Component;
+
+new class extends Component {
+    #[On('user:updated')]
+    public function refresh(): void
+    {
+        // No-op — component re-renders automatically on the event.
+    }
+
+    public function logout(): void
+    {
+        Auth::guard('web')->logout();
+
+        Session::invalidate();
+        Session::regenerateToken();
+
+        $this->redirect('/');
+    }
+};
+?>
+
 <div class="nav-item dropdown">
     <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
-        @isset($user->image)
+        @isset(Auth::user()->image)
             <span
                 class="avatar avatar-sm"
-                style="background-image: url({{ Storage::disk('public')->url($user->image) }})"
+                style="background-image: url({{ Storage::disk('public')->url(Auth::user()->image) }})"
             ></span>
         @else
-            <span class="avatar avatar-sm"> {{ Str::of($user->name)->substr(0, 1) }} </span>
+            <span class="avatar avatar-sm"> {{ Str::of(Auth::user()->name)->substr(0, 1) }} </span>
         @endisset
     </a>
 
