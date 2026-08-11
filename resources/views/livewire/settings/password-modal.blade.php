@@ -70,11 +70,7 @@
                         </div>
 
                         <div class="modal-footer">
-                            <button
-                                x-on:click="open = false"
-                                type="button"
-                                class="btn btn-link link-secondary me-auto"
-                            >
+                            <button x-on:click="open = false" type="button" class="btn btn-link link-secondary me-auto">
                                 Cancel
                             </button>
 

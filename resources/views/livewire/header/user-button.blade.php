@@ -6,9 +6,7 @@
                 style="background-image: url({{ Storage::disk('public')->url($user->image) }})"
             ></span>
         @else
-            <span class="avatar avatar-sm">
-                {{ Str::of($user->name)->substr(0, 1) }}
-            </span>
+            <span class="avatar avatar-sm"> {{ Str::of($user->name)->substr(0, 1) }} </span>
         @endisset
     </a>
 
@@ -36,10 +34,7 @@
             {{ __('Dashboard') }}
         </a>
 
-        <a
-            href="{{ route('settings.profile') }}"
-            @class(['dropdown-item', 'active' => Request::routeIs('settings.*')])
-        >
+        <a href="{{ route('settings.profile') }}" @class(['dropdown-item', 'active' => Request::routeIs('settings.*')])>
             {{-- settings --}}
             <svg
                 xmlns="http://www.w3.org/2000/svg"

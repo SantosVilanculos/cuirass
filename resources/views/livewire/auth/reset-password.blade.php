@@ -35,9 +35,7 @@
 
                 <div class="mb-3">
                     <label for="password" class="form-label">{{ __('Password') }}</label>
-                    <small class="form-hint">
-                        {{ __('Your password must be 8-20 characters long.') }}
-                    </small>
+                    <small class="form-hint"> {{ __('Your password must be 8-20 characters long.') }} </small>
                     <input
                         wire:model="password"
                         name="password"
@@ -55,9 +53,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="password_confirmation" class="form-label">
-                        {{ __('Confirm Password') }}
-                    </label>
+                    <label for="password_confirmation" class="form-label"> {{ __('Confirm Password') }} </label>
                     <input
                         wire:model="password_confirmation"
                         name="password_confirmation"

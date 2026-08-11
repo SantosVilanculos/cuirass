@@ -44,9 +44,7 @@
                 </p>
 
                 <div class="mb-3">
-                    <label for="password" class="form-label">
-                        {{ __('Password') }}
-                    </label>
+                    <label for="password" class="form-label"> {{ __('Password') }} </label>
 
                     <input
                         wire:model="password"

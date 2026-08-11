@@ -19,11 +19,7 @@
                 @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
                     <div class="row">
                         <div class="col-md-6">
-                            <p class="text-body-secondary">
-                                Your email address is unverified. Please check your inbox for a verification email and
-                                click the link to confirm your email. If you didn\'t receive the email, we will gladly
-                                send you another.
-                            </p>
+                            <p class="text-body-secondary">Your email address is unverified. Please check your inbox for a verification email and click the link to confirm your email. If you didn\'t receive the email, we will gladly send you another.</p>
                             <button
                                 wire:click="sendEmailVerificationNotification"
                                 wire:loading.class="btn-loading"

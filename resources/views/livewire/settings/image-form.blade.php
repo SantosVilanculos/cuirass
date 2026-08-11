@@ -13,9 +13,7 @@
                             style="background-image: url({{ Storage::disk('public')->url($user->image) }})"
                         ></span>
                     @else
-                        <span class="avatar avatar-xl">
-                            {{ Str::of(Auth::user()->name)->substr(0, 1) }}
-                        </span>
+                        <span class="avatar avatar-xl"> {{ Str::of(Auth::user()->name)->substr(0, 1) }} </span>
                     @endisset
                 </div>
                 <input
@@ -58,10 +56,7 @@
 
     <div class="card-footer">
         <div class="d-flex column-gap-2 align-items-center justify-content-between">
-            <p class="mb-0 text-body-secondary">
-                It's recommended that you use a square picture that's at least 192x192 pixels and 2 MB or less. Use a
-                PNG or JPG file.
-            </p>
+            <p class="mb-0 text-body-secondary">It's recommended that you use a square picture that's at least 192x192 pixels and 2 MB or less. Use a PNG or JPG file.</p>
         </div>
     </div>
 </div>

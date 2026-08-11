@@ -74,9 +74,7 @@
                 <div class="mb-3">
                     <label class="form-check">
                         <input wire:model="remember" name="remember" type="checkbox" class="form-check-input" />
-                        <span class="form-check-label">
-                            {{ __('Remember me') }}
-                        </span>
+                        <span class="form-check-label"> {{ __('Remember me') }} </span>
                     </label>
                 </div>
 

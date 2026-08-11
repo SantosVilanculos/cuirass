@@ -27,10 +27,7 @@
             <div class="space-y">
                 <div class="row align-items-center">
                     <div class="col-auto">
-                        <p class="text-body-secondary">
-                            Deleting your user will permanently delete all user data. You should download any data that
-                            you wish to retain.
-                        </p>
+                        <p class="text-body-secondary">Deleting your user will permanently delete all user data. You should download any data that you wish to retain.</p>
                         @livewire('settings.delete-user-modal')
                     </div>
                 </div>

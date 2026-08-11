@@ -58,71 +58,31 @@
                             <div class="pt-4 px-4 left">
                                 <h1 class="text-body-primary fs-4 lh-base mb-1">Let's get started</h1>
 
-                                <p class="text-body-secondary fs-4 lh-base mb-2">
-                                    Laravel has an incredibly rich ecosystem.
-                                    <br />
-                                    We suggest starting with the following.
-                                </p>
+                                <p class="text-body-secondary fs-4 lh-base mb-2">Laravel has an incredibly rich ecosystem.
+                                <br />
+                                We suggest starting with the following.</p>
 
                                 <ul class="steps steps-vertical">
                                     <li class="step-item">
-                                        <p class="text-body-secondary fs-4 lh-base mb-3 mb-md-4">
-                                            Read the
-                                            <a
-                                                href="https://laravel.com/docs"
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                class="d-inline-flex align-items-center"
-                                            >
-                                                Laravel
+                                        <p class="text-body-secondary fs-4 lh-base mb-3 mb-md-4">Read the
+                                        <a href="https://laravel.com/docs" target="_blank" rel="noopener noreferrer" class="d-inline-flex align-items-center"> Laravel
 
-                                                {{-- arrow-up-right --}}
-                                                <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    width="24"
-                                                    height="24"
-                                                    viewBox="0 0 24 24"
-                                                    fill="none"
-                                                    stroke="currentColor"
-                                                    stroke-width="2"
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                    class="icon w-3 h-3"
-                                                >
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                    <path d="M17 7l-10 10" />
-                                                    <path d="M8 7l9 0l0 9" />
-                                                </svg>
-                                            </a>
-                                            and
-                                            <a
-                                                href="https://tabler.io/docs"
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                class="d-inline-flex align-items-center"
-                                            >
-                                                Tabler
+                                            {{-- arrow-up-right --}}
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon w-3 h-3">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                <path d="M17 7l-10 10" />
+                                                <path d="M8 7l9 0l0 9" />
+                                            </svg> </a>
+                                        and
+                                        <a href="https://tabler.io/docs" target="_blank" rel="noopener noreferrer" class="d-inline-flex align-items-center"> Tabler
 
-                                                {{-- arrow-up-right --}}
-                                                <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    width="24"
-                                                    height="24"
-                                                    viewBox="0 0 24 24"
-                                                    fill="none"
-                                                    stroke="currentColor"
-                                                    stroke-width="2"
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                    class="icon w-3 h-3"
-                                                >
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                    <path d="M17 7l-10 10" />
-                                                    <path d="M8 7l9 0l0 9" />
-                                                </svg>
-                                            </a>
-                                            documentation
-                                        </p>
+                                            {{-- arrow-up-right --}}
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon w-3 h-3">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                <path d="M17 7l-10 10" />
+                                                <path d="M8 7l9 0l0 9" />
+                                            </svg> </a>
+                                        documentation</p>
                                     </li>
 
                                     <li class="step-item">

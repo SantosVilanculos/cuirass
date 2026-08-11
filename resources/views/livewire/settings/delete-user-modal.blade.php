@@ -25,10 +25,7 @@
 
                             <div class="modal-title">Are you sure?</div>
 
-                            <p class="text-body-secondary">
-                                If you proceed, you will lose all your personal data. Please enter your password to
-                                confirm that you would like to permanently delete your personal data.
-                            </p>
+                            <p class="text-body-secondary">If you proceed, you will lose all your personal data. Please enter your password to confirm that you would like to permanently delete your personal data.</p>
 
                             <div class="mb-3">
                                 <label for="password" class="form-label">Current password</label>
@@ -49,11 +46,7 @@
                         </div>
 
                         <div class="modal-footer">
-                            <button
-                                x-on:click="open = false"
-                                type="button"
-                                class="btn btn-link link-secondary me-auto"
-                            >
+                            <button x-on:click="open = false" type="button" class="btn btn-link link-secondary me-auto">
                                 Cancel
                             </button>
 
