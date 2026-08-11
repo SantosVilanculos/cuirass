@@ -28,3 +28,4 @@
 /pnpm-lock.yaml
 /TODO.md
 /yarn-error.log
+.env.before_lerd
