@@ -7,7 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-Nothing yet.
+### Changed
+
+- Raised the PHP requirement to `^8.4`.
+- Upgraded `laravel/framework` to `^13.25`.
+- Upgraded `livewire/livewire` to `^4.4`.
+- Upgraded `pestphp/pest` to `^5.0`.
+- Upgraded `pestphp/pest-plugin-laravel` to `^5.0`.
+- Upgraded `pestphp/pest-plugin-type-coverage` to `^5.0`.
+- Upgraded `phpunit/phpunit` to `^13.0`.
+- Upgraded `vite` to `^8.0` and `laravel-vite-plugin` to `^3.0`.
+- Upgraded `apexcharts` to `^6.0`.
+- Updated the remaining composer and npm packages to their latest versions.
 
 ## [1.1.0] - 2026-05-10
 
