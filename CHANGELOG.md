@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Added and configured the Pest PHPStan and Rector plugins.
+- Added PHPStan analysis of the `tests` directory.
+- Updated `laravel/boost` with new agent skills (`infer-conventions`, Livewire reference).
+
 ### Changed
 
 - Raised the PHP requirement to `^8.4`.
@@ -19,6 +25,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Upgraded `vite` to `^8.0` and `laravel-vite-plugin` to `^3.0`.
 - Upgraded `apexcharts` to `^6.0`.
 - Updated the remaining composer and npm packages to their latest versions.
+- Replaced the raw Intervention image processing with Laravel's `Image` wrapper in the profile image upload.
+- Fixed the deprecated `PDO::MYSQL_ATTR_SSL_CA` constant usage in the database config for PHP 8.5.
 
 ## [1.1.0] - 2026-05-10
 
