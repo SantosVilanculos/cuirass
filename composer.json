@@ -83,16 +83,6 @@
             "pnpm install --ignore-scripts",
             "pnpm run build"
         ],
-        "setup:wolke": [
-            "Composer\\Config::disableProcessTimeout",
-            "composer install",
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
-            "@php artisan key:generate",
-            "@php artisan storage:link",
-            "@php artisan migrate --force --seed",
-            "npm install --ignore-scripts",
-            "npm run build"
-        ],
         "lint": [
             "npx prettier --check \"./resources/**/*.{blade.php,css,js}\"",
             "vendor/bin/phpstan analyse",
