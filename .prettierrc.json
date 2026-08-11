@@ -2,17 +2,16 @@
     "arrowParens": "avoid",
     "overrides": [
         {
-            "files": [
-                "*.blade.php"
-            ],
+            "files": ["resources/views/**/*.blade.php"],
             "options": {
+                "bladeDirectiveArgSpacing": "none",
+                "bladeEchoSpacing": "space",
+                "bladeKeepHeadAndBodyAtRoot": false,
                 "parser": "blade"
             }
         }
     ],
-    "plugins": [
-        "prettier-plugin-blade"
-    ],
+    "plugins": ["prettier-plugin-blade"],
     "printWidth": 120,
     "semi": true,
     "singleQuote": true,
