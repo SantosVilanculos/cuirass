@@ -76,8 +76,8 @@ describe('delete user', function (): void {
             ->assertHasNoErrors()
             ->assertRedirectToRoute('login');
 
-        expect($user->fresh())->toBeNull();
-        expect(auth()->check())->toBeFalse();
+        expect($user->fresh())->toBeNull()
+            ->and(auth()->check())->toBeFalse();
     });
 
     test('correct password must be provided to delete account', function (): void {
@@ -95,7 +95,7 @@ describe('delete user', function (): void {
             ->assertHasErrors(['password'])
             ->assertNoRedirect();
 
-        expect($user->fresh())->not->toBeNull();
-        expect(auth()->check())->toBeTrue();
+        expect($user->fresh())->not->toBeNull()
+            ->and(auth()->check())->toBeTrue();
     });
 });

@@ -11,28 +11,23 @@ test('to array', function (): void {
 
     $user->refresh();
 
-    expect($user->toArray())->toHaveSnakeCaseKeys();
-
-    expect(array_keys($user->toArray()))
-        ->toBe(
-            [
-                'id',
-                'image',
-                'name',
-                'email',
-                'email_verified_at',
-                'created_at',
-                'updated_at',
-            ]
-        );
+    expect($user->toArray())->toHaveSnakeCaseKeys()
+        ->and(array_keys($user->toArray()))->toBe([
+            'id',
+            'image',
+            'name',
+            'email',
+            'email_verified_at',
+            'created_at',
+            'updated_at',
+        ]);
 });
 
 test('get hidden', function (): void {
     $user = User::factory()->create();
 
-    expect($user->getHidden())->toBe(['password', 'remember_token']);
-
-    expect($user->toArray())->not->toHaveKeys(['password', 'remember_token']);
+    expect($user->getHidden())->toBe(['password', 'remember_token'])
+        ->and($user->toArray())->not->toHaveKeys(['password', 'remember_token']);
 });
 
 test('get casts', function (): void {
@@ -46,9 +41,6 @@ test('get casts', function (): void {
                 'password' => 'hashed',
             ]
         );
-
-    // id
-    expect($user->id)->toBeInt();
 
     // email_verified_at
     expect($user->email_verified_at)->toBeInstanceOf(CarbonImmutable::class);

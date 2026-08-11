@@ -38,6 +38,8 @@
         "nunomaduro/collision": "^8.9.5",
         "pestphp/pest": "^5.1.0",
         "pestphp/pest-plugin-laravel": "^5.0.1",
+        "pestphp/pest-plugin-phpstan": "^5.0",
+        "pestphp/pest-plugin-rector": "^5.0",
         "pestphp/pest-plugin-type-coverage": "^5.0.2",
         "phpstan/phpstan": "^2.2.8",
         "phpunit/phpunit": "^13.3.0",
