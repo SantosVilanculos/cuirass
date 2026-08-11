@@ -1,31 +1,44 @@
-[![tests](https://img.shields.io/github/actions/workflow/status/SantosVilanculos/cuirass/test.yml?label=tests)](https://github.com/SantosVilanculos/cuirass/actions)
-[![packagist](https://img.shields.io/packagist/v/santosvilanculos/cuirass)](https://packagist.org/packages/santosvilanculos/cuirass)
-[![license](https://img.shields.io/github/license/SantosVilanculos/cuirass)](https://github.com/SantosVilanculos/cuirass/blob/main/LICENSE)
+<a href="https://github.com/SantosVilanculos/cuirass/actions">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://www.shieldcn.dev/github/ci/SantosVilanculos/cuirass.svg?variant=secondary&amp;size=xs&amp;mode=dark&amp;font=geist">
+    <img alt="CI" src="https://www.shieldcn.dev/github/ci/SantosVilanculos/cuirass.svg?variant=secondary&amp;size=xs&amp;mode=light&amp;font=geist">
+  </picture>
+</a>
+<a href="https://packagist.org/packages/santosvilanculos/cuirass">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://shieldcn.dev/packagist/v/santosvilanculos/cuirass.svg?variant=branded&amp;size=xs&amp;mode=dark&amp;font=geist">
+    <img alt="Packagist" src="https://shieldcn.dev/packagist/v/santosvilanculos/cuirass.svg?variant=branded&amp;size=xs&amp;mode=light&amp;font=geist">
+  </picture>
+</a>
+<a href="https://github.com/SantosVilanculos/cuirass/blob/main/LICENSE">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://www.shieldcn.dev/github/license/SantosVilanculos/cuirass.svg?variant=ghost&amp;size=xs&amp;mode=dark&amp;font=geist">
+    <img alt="License" src="https://www.shieldcn.dev/github/license/SantosVilanculos/cuirass.svg?variant=ghost&amp;size=xs&amp;mode=light&amp;font=geist">
+  </picture>
+</a>
 
 ![screenshot](./screenshot.png)
 
 ## Introduction
 
-Cuirass is a Laravel application scaffold designed to kickstart your projects with a robust foundation. It combines the visually appealing and responsive Tabler admin dashboard template with the powerful Laravel framework, providing you with everything you need to start building your application immediately.
+Cuirass is a Laravel starter kit built on the Tabler admin dashboard. A solid foundation, ready to build on.
 
 ## Features
 
-- Pre-built authentication system (login, registration, password reset)
-- Comprehensive test suite for code quality assurance
-- Typed codebase for enhanced reliability via PHP type hinting
-- Built on the responsive Tabler admin dashboard template
+- Authentication out of the box: login, registration, password reset
+- Full test suite
+- Typed codebase, PHP type hints throughout
+- Tabler admin dashboard included
 
 ## Installation
 
-You can quickly get started with Cuirass using either the Laravel installer or Composer:
-
-### Using laravel installer
+Using the Laravel installer:
 
 ```sh
 laravel new --using santosvilanculos/cuirass your-project-name
 ```
 
-### Using Composer
+Using Composer:
 
 ```sh
 composer create-project santosvilanculos/cuirass your-project-name
@@ -33,9 +46,9 @@ composer create-project santosvilanculos/cuirass your-project-name
 
 ## License
 
-Cuirass is open-sourced software licensed under the [MIT license](./LICENSE).
+MIT licensed. See [LICENSE](./LICENSE).
 
 ## Credits
 
-- [Tabler](https://tabler.io) - Admin Dashboard Template
-- [Laravel](https://laravel.com) - PHP Framework
+- [Tabler](https://tabler.io), admin dashboard template
+- [Laravel](https://laravel.com), PHP framework
