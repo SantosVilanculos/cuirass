@@ -1,4 +1,4 @@
-<x-layouts.app>
+<x-layouts::app>
     @section('navbar')
         <header class="navbar-expand-md">
             <div class="collapse navbar-collapse" id="navbar-menu">

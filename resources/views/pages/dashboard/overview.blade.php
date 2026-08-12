@@ -1,4 +1,4 @@
-<x-layouts.dashboard>
+<x-layouts::dashboard>
     @section('page-header')
         <div class="row g-2 align-items-center">
             <div class="col">

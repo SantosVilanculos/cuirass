@@ -1,4 +1,4 @@
-<x-layouts.guest>
+<x-layouts::guest>
     @push('assets')
         <style>
             .left {

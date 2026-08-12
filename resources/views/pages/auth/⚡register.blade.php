@@ -9,7 +9,7 @@ use Illuminate\Validation\Rules;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
-new #[Layout('components.layouts.guest')] class extends Component {
+new #[Layout('layouts::guest')] class extends Component {
     public ?string $name = null;
 
     public ?string $email = null;

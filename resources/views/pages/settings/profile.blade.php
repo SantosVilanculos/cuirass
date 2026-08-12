@@ -1,4 +1,4 @@
-<x-layouts.settings>
+<x-layouts::settings>
     @section('page-header')
         <div class="row g-2 align-items-center">
             <div class="col">

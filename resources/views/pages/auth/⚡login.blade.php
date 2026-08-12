@@ -10,7 +10,7 @@ use Livewire\Attributes\Layout;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
-new #[Layout('components.layouts.guest')] class extends Component {
+new #[Layout('layouts::guest')] class extends Component {
     #[Validate('required|string|email')]
     public ?string $email = null;
 
