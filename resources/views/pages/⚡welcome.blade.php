@@ -1,4 +1,13 @@
-<x-layouts::guest>
+<?php
+
+use Livewire\Attributes\Layout;
+use Livewire\Component;
+
+new #[Layout('layouts::guest')] class extends Component {
+    //
+};
+?>
+
     @push('assets')
         <style>
             .left {
@@ -858,4 +867,3 @@
             </div>
         </div>
     </div>
-    </x-layouts.guest>

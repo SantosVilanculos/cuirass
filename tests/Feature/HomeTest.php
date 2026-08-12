@@ -3,8 +3,7 @@
 declare(strict_types=1);
 
 test('returns a successful response', function (): void {
-    /** @var Illuminate\Testing\TestResponse */
     $response = $this->get('/');
 
-    $response->assertStatus(200);
+    $response->assertStatus(200)->assertSee('Let\'s get started', false);
 });

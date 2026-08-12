@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
@@ -10,7 +11,7 @@ new class extends Component {
 
     public function destroy(): void
     {
-        /** @var \App\Models\User */
+        /** @var User $user */
         $user = Auth::user();
 
         $this->authorize('delete', $user);

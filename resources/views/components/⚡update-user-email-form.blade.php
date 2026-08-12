@@ -10,7 +10,7 @@ new class extends Component {
 
     public function save(): void
     {
-        /** @var User */
+        /** @var User $user */
         $user = Auth::user();
 
         $this->authorize('update', $user);
@@ -39,7 +39,7 @@ new class extends Component {
 
     public function sendEmailVerificationNotification(): void
     {
-        /** @var User */
+        /** @var User $user */
         $user = Auth::user();
 
         if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail()) {
@@ -51,7 +51,7 @@ new class extends Component {
 
     public function mount(): void
     {
-        /** @var User */
+        /** @var User $user */
         $user = Auth::user();
 
         $this->email = $user->email;

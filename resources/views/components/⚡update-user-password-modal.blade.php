@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
@@ -20,7 +21,7 @@ new class extends Component {
      */
     public function save(): void
     {
-        /** @var \App\Models\User */
+        /** @var User $user */
         $user = Auth::user();
 
         $this->authorize('update', $user);
@@ -36,7 +37,7 @@ new class extends Component {
             ]);
         }
 
-        $user->update(['password' => Hash::make((string) $this->password)]);
+        $user->update(['password' => $this->password]);
 
         Auth::logoutOtherDevices((string) $this->password);
 

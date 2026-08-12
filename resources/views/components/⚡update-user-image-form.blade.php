@@ -22,7 +22,7 @@ new class extends Component {
 
     public function save(): void
     {
-        /** @var User */
+        /** @var User $disk */
         $user = Auth::user();
 
         $this->authorize('update', $user);
@@ -40,11 +40,11 @@ new class extends Component {
         ]);
 
         if ($this->image instanceof TemporaryUploadedFile) {
-            /** @var \Illuminate\Filesystem\FilesystemAdapter */
+            /** @var \Illuminate\Filesystem\FilesystemAdapter $disk */
             $disk = Storage::disk('public');
 
             $path = Image::fromUpload($this->image)
-                ->cover(256, 256)
+                ->cover(400, 400)
                 ->storeAs(path: $user->getTable(), name: $this->image->hashName(), disk: 'public');
 
             if (is_string($path) && $disk->fileExists((string) $user->image)) {
@@ -64,14 +64,12 @@ new class extends Component {
 
     public function destroy(): void
     {
-        /**
-         * @var User
-         */
+        /** @var User $user */
         $user = Auth::user();
 
         $this->authorize('update', $user);
 
-        /** @var \Illuminate\Filesystem\FilesystemAdapter */
+        /** @var \Illuminate\Filesystem\FilesystemAdapter $disk */
         $disk = Storage::disk('public');
 
         if ($disk->fileExists((string) $user->image)) {

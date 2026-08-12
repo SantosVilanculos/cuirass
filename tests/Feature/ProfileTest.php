@@ -12,7 +12,9 @@ test('profile screen can be rendered', function (): void {
     /** @var Illuminate\Testing\TestResponse */
     $response = $this->get(route('settings.profile'));
 
-    $response->assertOk();
+    $response
+        ->assertOk()
+        ->assertSee('<h2 class="page-title">Profile</h2>', false);
 });
 
 test('user is redirected to login if not authenticated', function (): void {

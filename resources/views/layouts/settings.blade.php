@@ -1,12 +1,4 @@
 <x-layouts::app>
-    @section('page-header')
-        <div class="row g-2 align-items-center">
-            <div class="col">
-                <h2 class="page-title">Profile</h2>
-            </div>
-        </div>
-    @endsection
-
     <div class="row g-5">
         <div class="col-sm-2">
             <div class="sticky-top">

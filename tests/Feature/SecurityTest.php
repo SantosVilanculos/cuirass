@@ -12,7 +12,9 @@ test('security screen can be rendered', function (): void {
     /** @var Illuminate\Testing\TestResponse */
     $response = $this->get(route('settings.security'));
 
-    $response->assertOk();
+    $response
+        ->assertOk()
+        ->assertSee('<h2 class="page-title">Security</h2>', false);
 });
 
 test('user is redirected to login if not authenticated', function (): void {

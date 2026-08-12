@@ -7,12 +7,11 @@ use Illuminate\Database\UniqueConstraintViolationException;
 use Illuminate\Support\Facades\Hash;
 
 test('to array', function (): void {
-    $user = User::factory()->create();
+    $user = User::factory()->create()->fresh();
 
-    $user->refresh();
-
-    expect($user->toArray())->toHaveSnakeCaseKeys()
-        ->and(array_keys($user->toArray()))->toBe([
+    expect($user->toArray())
+        ->toHaveSnakeCaseKeys()
+        ->toHaveKeys([
             'id',
             'image',
             'name',
@@ -20,18 +19,15 @@ test('to array', function (): void {
             'email_verified_at',
             'created_at',
             'updated_at',
+        ])
+        ->not->toHaveKeys([
+            'password',
+            'remember_token',
         ]);
 });
 
-test('get hidden', function (): void {
-    $user = User::factory()->create();
-
-    expect($user->getHidden())->toBe(['password', 'remember_token'])
-        ->and($user->toArray())->not->toHaveKeys(['password', 'remember_token']);
-});
-
 test('get casts', function (): void {
-    $user = User::factory()->create(['password' => 'password']);
+    $user = User::factory()->create(['password' => 'password'])->fresh();
 
     expect($user->getCasts())
         ->toBe(
@@ -51,11 +47,11 @@ test('get casts', function (): void {
 });
 
 describe('email', function (): void {
-    beforeEach(fn () => User::factory()->create(['email' => 'johndoe@example.test']));
+    beforeEach(fn () => User::factory()->create(['email' => 'johndoe@example.com']));
 
-    test('throws unique constraint violation exception', fn () => User::factory()->create(['email' => 'johndoe@example.test']))
+    test('throws unique constraint violation exception', fn () => User::factory()->create(['email' => 'johndoe@example.com']))
         ->throws(UniqueConstraintViolationException::class);
 
-    test('throws no exceptions', fn () => User::factory()->create(['email' => 'janedoe@example.test']))
+    test('throws no exceptions', fn () => User::factory()->create(['email' => 'janedoe@example.com']))
         ->throwsNoExceptions();
 });

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -8,7 +9,7 @@ new class extends Component {
 
     public function save(): void
     {
-        /** @var \App\Models\User */
+        /** @var User $user */
         $user = Auth::user();
 
         $this->authorize('update', $user);
@@ -27,7 +28,7 @@ new class extends Component {
 
     public function mount(): void
     {
-        /** @var \App\Models\User */
+        /** @var User $user */
         $user = Auth::user();
 
         $this->name = $user->name;
