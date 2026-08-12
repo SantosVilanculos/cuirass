@@ -44,7 +44,7 @@ test('users can logout', function (): void {
 
     $this->actingAs($user);
 
-    $response = Livewire::test('header.user-button')
+    $response = Livewire::test('user-dropdown')
         ->call('logout');
 
     $response->assertRedirect('/');

@@ -31,7 +31,7 @@ describe('password', function (): void {
 
         $this->actingAs($user);
 
-        $response = Livewire::test('settings.password-modal')
+        $response = Livewire::test('update-user-password-modal')
             ->set('current_password', 'password')
             ->set('password', 'new-password')
             ->set('password_confirmation', 'new-password')
@@ -49,7 +49,7 @@ describe('password', function (): void {
 
         $this->actingAs($user);
 
-        $response = Livewire::test('settings.password-modal')
+        $response = Livewire::test('update-user-password-modal')
             ->set('current_password', 'wrong-password')
             ->set('password', 'new-password')
             ->set('password_confirmation', 'new-password')
@@ -66,7 +66,7 @@ describe('delete user', function (): void {
 
         $this->actingAs($user);
 
-        $response = Livewire::test('settings.delete-user-modal')
+        $response = Livewire::test('delete-user-modal')
             ->set('password', 'password')
             ->call('destroy');
 
@@ -85,7 +85,7 @@ describe('delete user', function (): void {
 
         $this->actingAs($user);
 
-        $response = Livewire::test('settings.delete-user-modal')
+        $response = Livewire::test('delete-user-modal')
             ->set('password', 'wrong-password')
             ->call('destroy');
 

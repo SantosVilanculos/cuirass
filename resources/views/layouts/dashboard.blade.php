@@ -68,5 +68,4 @@
         </header>
     @endsection
 
-    {{ $slot }}
-</x-layouts.app>
+    {{ $slot }} </x-layouts.app>

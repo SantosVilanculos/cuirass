@@ -127,4 +127,4 @@
 
         <div class="col-sm space-y-4">{{ $slot }}</div>
     </div>
-</x-layouts.app>
+    </x-layouts.app>

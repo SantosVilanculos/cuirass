@@ -858,4 +858,4 @@
             </div>
         </div>
     </div>
-</x-layouts.guest>
+    </x-layouts.guest>

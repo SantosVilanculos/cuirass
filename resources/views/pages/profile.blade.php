@@ -7,7 +7,7 @@
         </div>
     @endsection
 
-    @livewire('settings.image-form')
-    @livewire('settings.name-form')
-    @livewire('settings.email-form')
-</x-layouts.settings>
+    @livewire('update-user-image-form')
+    @livewire('update-user-name-form')
+    @livewire('update-user-email-form')
+    </x-layouts.settings>

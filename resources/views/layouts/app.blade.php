@@ -349,7 +349,7 @@
                             </div>
                         </div>
 
-                        @livewire('header.user-button')
+                        @livewire('user-dropdown')
                     </div>
                 </div>
             </header>

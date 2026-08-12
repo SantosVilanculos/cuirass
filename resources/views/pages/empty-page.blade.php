@@ -8,4 +8,4 @@
     @endsection
 
     {{-- ... --}}
-</x-layouts.dashboard>
+    </x-layouts.dashboard>

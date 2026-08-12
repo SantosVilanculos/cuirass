@@ -17,7 +17,7 @@
                 <div class="row align-items-center">
                     <div class="col-auto">
                         <p class="text-body-secondary">You can change your password here.</p>
-                        @livewire('settings.password-modal')
+                        @livewire('update-user-password-modal')
                     </div>
                 </div>
             </div>
@@ -28,7 +28,7 @@
                 <div class="row align-items-center">
                     <div class="col-auto">
                         <p class="text-body-secondary">Deleting your user will permanently delete all user data. You should download any data that you wish to retain.</p>
-                        @livewire('settings.delete-user-modal')
+                        @livewire('delete-user-modal')
                     </div>
                 </div>
             </div>
@@ -40,4 +40,4 @@
         <!--     </div> -->
         <!-- </div> -->
     </div>
-</x-layouts.settings>
+    </x-layouts.settings>
