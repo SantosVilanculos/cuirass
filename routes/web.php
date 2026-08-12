@@ -9,15 +9,15 @@ Route::get('/', fn (): Illuminate\Contracts\View\Factory|\Illuminate\Contracts\V
 Route::middleware(['auth', 'verified'])
     ->prefix('dashboard')
     ->group(function (): void {
-        Route::view('/', 'pages.dashboard.overview')->name('dashboard');
+        Route::view('/', 'pages.overview')->name('dashboard');
 
-        Route::view('empty-page', 'pages.dashboard.empty-page')->name('dashboard.empty-page');
+        Route::view('empty-page', 'pages.empty-page')->name('dashboard.empty-page');
     });
 
 Route::middleware(['auth'])->group(function (): void {
     Route::redirect('settings', 'settings/profile');
-    Route::view('settings/profile', 'pages.settings.profile')->name('settings.profile');
-    Route::view('settings/security', 'pages.settings.security')->name('settings.security');
+    Route::view('settings/profile', 'pages.profile')->name('settings.profile');
+    Route::view('settings/security', 'pages.security')->name('settings.security');
 });
 
 require __DIR__.'/auth.php';

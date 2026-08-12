@@ -11,7 +11,7 @@ test('registration screen can be rendered', function (): void {
 });
 
 test('new users can register', function (): void {
-    $response = Livewire::test('pages::auth.register')
+    $response = Livewire::test('pages::register')
         ->set('name', 'Test User')
         ->set('email', 'test@example.com')
         ->set('password', 'password')
